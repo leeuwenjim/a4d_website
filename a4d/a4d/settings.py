@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)-wu)g!uqavs!=fu$(-y52g5b8l+6g8ybsdz40)d$yq0^eay3c'
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-)-wu)g!uqavs!=fu$(-y52g5b8l+6g8ybsdz40)d$yq0^eay3c')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.getenv('DEBUG', '1')))
 
-ALLOWED_HOSTS = []
+# Host check happens within nginx on the deploymentserver
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -79,10 +80,18 @@ WSGI_APPLICATION = 'a4d.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE', 'sqlite3'),
+        'NAME': os.getenv('DB_NAME', BASE_DIR / '/db.sqlite3'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),
+        'PORT': int(os.getenv('DB_PORT', '3306')),
     }
 }
+DB_CHARSET = os.getenv('DB_CHARSET')
+if DB_CHARSET is not None:
+    DATABASES['default']['OPTIONS'] = { 'charset': DB_CHARSET }
+
 
 
 # Password validation
@@ -124,6 +133,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'statics_collected/'
 
 # Media settings
 MEDIA_URL = 'media/'

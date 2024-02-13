@@ -27,5 +27,7 @@ RUN pip install -r requirements.txt
 # copy the app
 COPY . /app
 
+RUN chmod -R 777 /app/media/
+
 EXPOSE 8000
 ENTRYPOINT python manage.py migrate;python manage.py collectstatic --no-input;uwsgi  --uid nobody --gid nogroup --http 0.0.0.0:8000 --module a4d.wsgi

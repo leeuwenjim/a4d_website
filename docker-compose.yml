@@ -1,0 +1,53 @@
+version: '3.2'
+
+services:
+  mysql_db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+      - type: bind
+        source: ./mysql-data
+        target: /var/lib/mysql
+
+  app:
+    build:
+      context: ./a4d
+    image: a4d_app-1.0
+    restart: always
+    expose:
+      - 8000
+    env_file:
+      - .env
+    depends_on:
+      - mysql_db
+    volumes:
+      - type: bind
+        source: ./nginx-data/static
+        target: /app/statics_collected
+      - type: bind
+        source: ./nginx-data/media
+        target: /app/media
+
+  nginx:
+    build:
+      context:
+        ./nginx
+    image: a4d_nginx
+    restart: always
+    env_file: .env
+    ports:
+      - ${EXTERNAL_PORT}:80
+    depends_on:
+      - app
+    volumes:
+      - type: bind
+        source: ./nginx-data/static
+        target: /home/a4d/static
+      - type: bind
+        source: ./nginx-data/media
+        target: /home/a4d/media

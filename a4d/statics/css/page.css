@@ -1,0 +1,46 @@
+
+.page_table {
+    font-family: var(--font-family);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+.page_table td, .page_table th {
+    border: 1px solid var(--page-table-border-color);
+    padding: 8px;
+}
+
+.page_table tr:nth-child(even) {
+    background-color: var(--page-table-even-row-background);
+}
+
+.page_table tr:nth-child(odd) {
+    background-color: var(--page-table-uneven-row-background);
+}
+
+.page_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: var(--page-table-header-background);
+    color: var(--font-color-light);
+}
+
+.page_delimiter {
+    line-height: 1.6em;
+    width: 100%;
+    text-align: center;
+}
+
+.page_delimiter:after {
+
+    display: inline-block;
+    content: "***";
+    font-size: 30px;
+    line-height: 65px;
+    height: 30px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+

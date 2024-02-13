@@ -1,0 +1,39 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="content-container">
+        <h2>Account aanpassen</h2>
+
+        <div id="error_container"></div>
+
+        <table style="width: 100%">
+            <tr>
+                <td>Voornaam:</td>
+                <td><input style="width: 100%" type="text" maxlength="100" placeholder="Voornaam..." id="edit_input_first_name" value="{{ data.first_name }}"></td>
+            </tr>
+            <tr>
+                <td>Achternaam:</td>
+                <td><input style="width: 100%" type="text" maxlength="100" placeholder="Achternaam..." id="edit_input_last_name" value="{{ data.last_name }}"></td>
+            </tr>
+            <tr>
+                <td>Gebruikersnaam:</td>
+                <td><input style="width: 100%" type="text" maxlength="100" placeholder="Gebruikersnaam..." id="edit_input_username" value="{{ data.username }}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right">
+                    <button class="edit_button" id="edit_button" onclick="edit_account({{ data.id }})">Pas aan</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script type="text/javascript" src="{% static 'js/backend/account_edit.js' %}"></script>
+
+{% endblock %}

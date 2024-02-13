@@ -1,0 +1,36 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/grid-gallery.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/backend/gallery.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+    <div class="content-container">
+
+        <h1>Foto's toevoegen</h1>
+
+        <div id="upload_errors"></div>
+
+        <input type="file" id="files" name="files" accept="image/*" multiple>
+        <button id="add_button" onclick="upload_images()">Uploaden</button>
+
+        <div id="progress_bar">
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div id="error_container"></div>
+        <div class="image-container" id="picture_container"></div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+    <p hidden id="album_id">{{ album.id }}</p>
+    <script src="{% static 'js/backend/gallery.js' %}"></script>
+
+{% endblock %}

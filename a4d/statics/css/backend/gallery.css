@@ -1,0 +1,56 @@
+.image-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.img-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 10px;
+    width: 200px;
+    margin: 10px;
+}
+
+.img-card > img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.img-card > button {
+    background-color: var(--delete-button-background);
+    color: var(--delete-button-font-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.meter {
+    margin-top: 20px;
+    height: 20px;
+    position: relative;
+    background: var(--progress-background);
+    border-radius: 10px;
+    padding: 1px;
+    box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.meter > span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: var(--progress-color);
+    box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}

@@ -1,0 +1,68 @@
+* {
+	box-sizing: border-box;
+	--light-background-color: #eeeeee;
+	--dark-color: #1b1c1d;
+	--dark-background-color: #1b1c1d;
+	--menu-height: 50px;
+	--font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	--font-color-light: #efefef;
+	--font-color-hover: #bfbfbf;
+	--menu-hover-background: #0b0c0d;
+	--menu-item-hover-background: #dddddd;
+	--light-blue-background: #ccccff;
+	--container-background: rgba(204, 204, 255, 0.88823529411764706);
+	--container-background-border: rgba(204, 204, 255, 0.96);
+	--content-text-size: 17px;
+
+	--side-menu-dark-color: #4242a6;
+	--side-menu-dark-color-hover: #414173;
+	--side-menu-border-color: rgba(204, 204, 255, 0.96);
+	--side-menu-item-background-color: #ccccff;
+	--side-menu-item-background-hover: #9999ff;
+
+	--modal-border-color: #888888;
+	--modal-header-background: #4242a6;
+
+	--pagination-item-border-color: #BABAFF;
+	--pagination-item-background: #4242a6;
+	--pagination-item-background-hover: rgba(204, 204, 255, 0.88823529411764706);
+
+	--page-table-border-color: #dddddd;
+	--page-table-even-row-background: #f2f2f2;
+	--page-table-uneven-row-background: #fefefe;
+	--page-table-header-background: rgb(66, 66, 166);
+
+	--delete-button-background: red;
+	--delete-button-background-hover: darkred;
+	--delete-button-border-color: darkred;
+	--delete-button-font-color: #efefef;
+	--delete-button-font-color-disabled: #4C2A2A;
+	--delete-button-font-background-disabled: #754141;
+
+	--add-button-background: green;
+	--add-button-background-hover: darkgreen;
+	--add-button-border-color: darkgreen;
+	--add-button-font-color: #efefef;
+	--add-button-font-color-disabled: #2A4C2A;
+	--add-button-font-background-disabled: #417541;
+
+	--edit-button-background: dodgerblue;
+	--edit-button-background-hover: royalblue;
+	--edit-button-border-color: royalblue;
+	--edit-button-font-color: #efefef;
+	--edit-button-font-color-disabled: #335677;
+	--edit-button-font-background-disabled: #4574A0;
+
+	--progress-background: #4242a6;
+	--progress-color: rgb(43, 194, 83);
+
+	--message-success-background: green;
+	--message-error-background: red;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: var(--light-background-color);
+}
+

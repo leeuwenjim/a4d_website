@@ -1,0 +1,53 @@
+.edit_button {
+    padding: 10px 20px;
+    background-color: var(--edit-button-background);
+    border: 1px solid var(--edit-button-border-color);
+    color: var(--font-color-light);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit_button:hover {
+    background-color: var(--edit-button-background-hover);
+}
+
+.edit_button.disabled, .edit_button.disabled:hover {
+    color: var(--edit-button-font-color-disabled);
+    background: var(--edit-button-font-background-disabled);
+}
+
+.delete_button {
+    padding: 10px 20px;
+    background-color: var(--delete-button-background);
+    border: 1px solid var(--delete-button-border-color);
+    color: var(--font-color-light);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete_button:hover {
+    background-color: var(--delete-button-background-hover);
+}
+
+.delete_button.disabled, .delete_button.disabled:hover {
+    background-color: var(--delete-button-font-background-disabled);
+    color: var(--delete-button-font-color-disabled);
+}
+
+.add_button {
+    padding: 10px 20px;
+    background-color: var(--add-button-background);
+    border: 1px solid var(--add-button-border-color);
+    color: var(--font-color-light);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.add_button:hover {
+    background-color: var(--add-button-background-hover);
+}
+
+.add_button.disabled, .add_button.disabled:hover {
+    background-color: var(--add-button-font-background-disabled);
+    color: var(--add-button-font-color-disabled);
+}

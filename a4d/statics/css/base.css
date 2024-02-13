@@ -1,0 +1,180 @@
+/*
+
+ _______  _______  __    _  __    _  _______  ______
+|  _    ||   _   ||  |  | ||  |  | ||       ||    _ |
+| |_|   ||  |_|  ||   |_| ||   |_| ||    ___||   | ||
+|       ||       ||       ||       ||   |___ |   |_||_
+|  _   | |       ||  _    ||  _    ||    ___||    __  |
+| |_|   ||   _   || | |   || | |   ||   |___ |   |  | |
+|_______||__| |__||_|  |__||_|  |__||_______||___|  |_|
+
+*/
+
+#banner {
+	background-image: url("/static/img/banner_small.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	width: 100%;
+	margin:0px;
+	height: 200px;
+}
+
+#banner-text {
+	padding: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	font-family: var(--font-family);
+	font-size: 60px;
+	color: var(--font-color-light);
+	text-align: center;
+	text-shadow: 4px 4px 2px black;
+}
+
+
+
+/*
+
+ _______  _______  __    _  _______  _______  __    _  _______
+|       ||       ||  |  | ||       ||       ||  |  | ||       |
+|       ||   _   ||   |_| ||_     _||    ___||   |_| ||_     _|
+|       ||  | |  ||       |  |   |  |   |___ |       |  |   |
+|      _||  |_|  ||  _    |  |   |  |    ___||  _    |  |   |
+|     |_ |       || | |   |  |   |  |   |___ | | |   |  |   |
+|_______||_______||_|  |__|  |___|  |_______||_|  |__|  |___|
+
+*/
+
+#content {
+    min-height: 60vh;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: auto;
+    padding: 0px;
+    width: 80%;
+    table-layout: fixed;
+    height: 1px;
+}
+
+.ct-menu {
+	width: 200px;
+	vertical-align: top;
+}
+
+.ct-spacer {
+	width: 40px;
+}
+
+.ct-content {
+	vertical-align: top;
+}
+
+.content-container {
+	background: var(--container-background);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	border: 2px solid rgba(204, 204, 255, 0.96);
+	border-radius: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+    font-family: var(--font-family);
+    font-size: var(--content-text-size);
+}
+
+.content-container.full-width {
+    width: 60%;
+    margin: auto;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.content-header {
+	font-family: var(--font-family);
+	color: var(--dark-color);
+	font-size: 45px;
+}
+
+.content-container h1 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 34px;
+}
+
+.content-container h2 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 30px;
+}
+
+.content-container h3 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 24px;
+}
+
+.content-container h4 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 20px;
+}
+
+.content-container h5 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 18px;
+}
+
+.content-container h6 {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 16px;
+}
+
+.content-container p {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: var(--content-text-size);
+}
+
+.content-container li {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: var(--content-text-size);
+}
+
+
+/*
+
+ _______  __   __  _______  ___      ___        _______  _______  ______    _______  _______  __    _
+|       ||  |_|  ||   _   ||   |    |   |      |       ||       ||    _ |  |       ||       ||  |  | |
+|  _____||       ||  |_|  ||   |    |   |      |  _____||       ||   | ||  |    ___||    ___||   |_| |
+| |_____ |       ||       ||   |    |   |      | |_____ |       ||   |_||_ |   |___ |   |___ |       |
+|_____  ||       ||       ||   |___ |   |___   |_____  ||      _||    __  ||    ___||    ___||  _    |
+ _____| || ||_|| ||   _   ||       ||       |   _____| ||     |_ |   |  | ||   |___ |   |___ | | |   |
+|_______||_|   |_||__| |__||_______||_______|  |_______||_______||___|  |_||_______||_______||_|  |__|
+
+*/
+
+@media screen and (max-width: 775px) {
+    /*
+
+     _______  _______  __    _  __    _  _______  ______
+    |  _    ||   _   ||  |  | ||  |  | ||       ||    _ |
+    | |_|   ||  |_|  ||   |_| ||   |_| ||    ___||   | ||
+    |       ||       ||       ||       ||   |___ |   |_||_
+    |  _   | |       ||  _    ||  _    ||    ___||    __  |
+    | |_|   ||   _   || | |   || | |   ||   |___ |   |  | |
+    |_______||__| |__||_|  |__||_|  |__||_______||___|  |_|
+
+    */
+    #banner-text {
+        font-size: 40px;
+    }
+}

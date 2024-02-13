@@ -1,0 +1,128 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal_content {
+    position: relative;
+    background-color: var(--light-background-color);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--modal-border-color);
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border-radius: 15px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_header {
+    padding: 2px 16px;
+    background-color: var(--modal-header-background);
+    color: var(--font-color-light);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.modal_body {
+    padding: 2px 16px;
+}
+
+.modal_footer {
+    padding: 2px 16px;
+    background-color: var(--modal-header-background);
+    color: var(--font-color-light);
+    text-align: right;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.modal_footer > button.deny {
+    padding: 10px 20px;
+    background-color: var(--delete-button-background);
+    border: 1px solid var(--delete-button-border-color);
+    color: var(--font-color-light);
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modal_footer > button.deny:hover {
+    background-color: var(--delete-button-background-hover);
+}
+
+.modal_footer > button.deny.disabled, .modal_footer > button.deny.disabled:hover {
+    background-color: var(--delete-button-font-background-disabled);
+    color: var(--delete-button-font-color-disabled);
+}
+
+.modal_footer > button.accept {
+    padding: 10px 20px;
+    background-color: var(--add-button-background);
+    border: 1px solid var(--add-button-border-color);
+    color: var(--add-button-font-color);
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modal_footer > button.accept:hover {
+    background-color: var(--add-button-background-hover);
+}
+
+.modal_footer > button.accept.disabled, .modal_footer > button.accept.disabled:hover {
+    background-color: var(--add-button-font-background-disabled);
+    color: var(--add-button-font-color-disabled);
+}

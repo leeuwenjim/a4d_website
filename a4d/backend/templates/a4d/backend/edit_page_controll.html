@@ -1,0 +1,40 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <link rel="stylesheet" src="{% static 'css/backend/page_edit.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="content-container">
+        <h1>{{ title }}</h1>
+
+        <div id="error_container"></div>
+
+        <div style="text-align: right; margin-bottom: 10px;">
+            <button class="add_button" id="add_button" onclick="save_editor()">Opslaan</button>
+        </div>
+
+
+        <div class="editor_container" id="editor_container">
+            <div id="editorjs"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+
+    <script src="{% static 'js/editor/delimiter.js' %}"></script>
+    <script src="{% static 'js/editor/header.js' %}"></script>
+    <script src="{% static 'js/editor/link.js' %}"></script>
+    <script src="{% static 'js/editor/list.js' %}"></script>
+    <script src="{% static 'js/editor/marker.js' %}"></script>
+    <script src="{% static 'js/editor/table.js' %}"></script>
+    <script src="{% static 'js/editor/editorjs.js' %}"></script>
+    <script src="{% static 'js/backend/page_edit.js' %}"></script>
+
+{% endblock %}

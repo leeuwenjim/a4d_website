@@ -1,0 +1,70 @@
+#content {
+    min-height: 60vh;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: auto;
+    padding: 0px;
+    width: 80%;
+    table-layout: fixed;
+    height: 1px;
+}
+
+.ct-menu {
+    width: 200px;
+    vertical-align: top;
+}
+
+.ct-spacer {
+    width: 40px;
+}
+
+.ct-content {
+    vertical-align: top;
+}
+
+.content-container {
+    background: var(--container-background);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--container-background-border);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.cp-menu {
+    width: 200px;
+    float: left;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--side-menu-border-color);
+}
+
+.cp-menu .cp-menu-header {
+    background-color: var(--side-menu-dark-color);
+    color: var(--font-color-light);
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.cp-menu .cp-menu-header:hover {
+    background-color: var(--side-menu-dark-color-hover);
+}
+
+.cp-menu *:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.cp-menu *:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.cp-menu-header.active {
+    background-color: var(--side-menu-dark-color-hover);
+}

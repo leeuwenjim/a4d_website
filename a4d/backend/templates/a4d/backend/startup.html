@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A4D Hoevelaken - Login</title>
+    <link rel="stylesheet" href="{% static 'css/backend/login.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div id="formContent">
+            <h1>A4D Startup</h1>
+            <h2>Gebruiker aanmaken</h2>
+
+            {% if form.errors %}
+
+            <div class="error">
+                {% for field_name, field_errors in form.errors.items %}
+                    {{ field_name }}: {{ field_errors.0 }}<br />
+                {% endfor %}
+            </div>
+
+            {% endif %}
+
+            <form action="" method="post" autocomplete="off">
+                {% csrf_token %}
+                {{ form.first_name }}
+                {{ form.last_name }}
+                {{ form.username }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+                <input type="submit" value="Aanmelden">
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

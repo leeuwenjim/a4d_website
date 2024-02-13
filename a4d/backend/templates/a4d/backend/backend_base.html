@@ -1,0 +1,49 @@
+{% load static %}
+<html>
+<head>
+    <title>A4D Hoevelaken - Controle paneel</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery_put_delete.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/backend/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/backend/backend.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/backend/message.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/backend/buttons.css' %}" />
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+<div id="panel_header">
+    <div id="panel_header_text">A4D Controle paneel</div>
+    <div id="panel_logout">Welkom {% firstof user.get_full_name user.username %}, <a href="{% url 'a4d_logout' %}">Afmelden</a>
+    </div>
+</div>
+
+<div id="content">
+    <table class="content-table">
+        <tr>
+            <td class="ct-menu">
+                <div class="cp-menu">
+                    {% for page in pages %}
+                        <a href="{{ page.0 }}" class="cp-menu-header{% if page.2 %} active{% endif %}">{{ page.1 }}</a>
+                    {% endfor %}
+                    {% comment %}<a class="gm-item" href="#">Dag 1</a>{% endcomment %}
+                </div>
+            </td>
+            <td class="ct-spacer"></td>
+            <td class="ct-content">
+
+                {% block content %}
+                {% endblock %}
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="{% static 'js/backend/messages.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

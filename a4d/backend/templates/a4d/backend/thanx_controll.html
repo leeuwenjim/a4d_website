@@ -1,0 +1,28 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="content-container">
+        <h1>Speciale dank beheren</h1>
+
+        <div id="error_container"></div>
+
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Naam:</th>
+                    <th style="width: 100px;">&nbsp;</th>
+                    <th style="width: 100px;">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="thanx_data">
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+
+    <script src="{% static 'js/backend/thanx.js' %}"></script>
+
+{% endblock %}

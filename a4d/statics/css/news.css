@@ -1,0 +1,38 @@
+.page_header {
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 40px;
+    width: 60%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.pagination .item {
+    display: inline-block;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid var(--pagination-item-border-color);
+    border-radius: 5px;
+    transition: background-color .3s;
+}
+
+.pagination .item.active {
+    color: var(--font-color-light);
+    background-color: var(--pagination-item-background);
+}
+
+.pagination .item:hover:not(.active):not(.disabled) {
+    background-color: var(--pagination-item-background-hover);
+}
+
+.news_header {
+    margin-bottom: 0px;
+}

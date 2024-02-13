@@ -264,7 +264,7 @@ class ImageOverview(DetailApiView):
             photo.save()
             return Response(ImageSerializer(photo).data, status=status.HTTP_201_CREATED)
         except Exception as e:
-            pass
+            print(e)
         return Response({'error': 'Could not save the image'}, status=status.HTTP_400_BAD_REQUEST)
 
 

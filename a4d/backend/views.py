@@ -24,7 +24,7 @@ def get_pages(slug):
         [reverse('a4d_beheer_edit', kwargs={'slug': 'inschrijven'}), 'Inschrijven', bool(slug == 'inschrijven')],
         [reverse('a4d_beheer_edit', kwargs={'slug': 'controles'}), 'Controles', bool(slug == 'controles')],
         [reverse('a4d_beheer_edit', kwargs={'slug': 'routes'}), 'Routes', bool(slug == 'routes')],
-        [reverse('a4d_beheer_edit', kwargs={'slug': 'parkerens'}), 'Parkeren', bool(slug == 'parkeren')],
+        [reverse('a4d_beheer_edit', kwargs={'slug': 'parkeren'}), 'Parkeren', bool(slug == 'parkeren')],
 
     ]
 

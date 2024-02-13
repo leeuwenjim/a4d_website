@@ -1,5 +1,8 @@
 FROM python:3.12.2-alpine3.18
 
+# Make sure all output is directly send to the terminal
+ENV PYTHONUNBUFFERED=1
+
 #Upgrade pip
 RUN python -m pip install --upgrade pip
 

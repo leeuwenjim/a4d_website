@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, resolve
+from django.views.decorators.csrf import csrf_exempt
+
 from a4d.utils import pages_slug_titles
 from .forms import LoginForm, UserCreateForm
 from .decorators import is_authenticated
@@ -31,6 +33,7 @@ def get_pages(slug):
 
     return pages
 
+@csrf_exempt
 def login_page(request) :
     if request.user.is_authenticated:
         return redirect('a4d_beheer')

@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'frontend.context_processors.contact_email_context',
             ],
         },
     },
@@ -165,3 +166,5 @@ REST_FRAMEWORK = {
 }
 
 SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', 'a4d_session')
+
+CONTACT_MAIL = os.getenv('CONTACT_MAIL', 'avondvierdaagsehoevelaken@ziggo.nl')

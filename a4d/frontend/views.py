@@ -18,15 +18,15 @@ def get_menu():
             ['Inschrijven', reverse('a4d_page', args=['inschrijven', ])],
             ['Startbureau &amp; controles', reverse('a4d_page', args=['controles', ])],
             ['Routes', reverse('a4d_page', args=['routes', ])],
-            ['Parkeren', reverse('a4d_page', args=['parkeren', ])]
-            ['Veelgestelde vragen', reverse('a4d_page', args=['faq', ])]
+            ['Parkeren', reverse('a4d_page', args=['parkeren', ])],
+            ['Veelgestelde vragen', reverse('a4d_page', args=['faq', ])],
         ]],
         ['Foto&rsquo;s', reverse('a4d_gallery')],
         ['Over ons', '#', [
             ['A4D Hoevelaken', reverse('a4d_page', args=['over', ])],
             ['Verkeersregelaars', reverse('a4d_page', args=['verkeersregelaars', ])],
             ['Dank aan', reverse('a4d_page', args=['dank', ])],
-            ['SGWB', reverse('a4d_page', args=['sgwb', ])]
+            ['SGWB', reverse('a4d_page', args=['sgwb', ])],
         ]],
     ]  # 'over', 'verkeersregelaars', 'dank', 'sgwb', 'inschrijven', 'controles', 'routes', 'parkeren']
 

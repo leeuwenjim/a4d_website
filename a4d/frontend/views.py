@@ -19,6 +19,7 @@ def get_menu():
             ['Startbureau &amp; controles', reverse('a4d_page', args=['controles', ])],
             ['Routes', reverse('a4d_page', args=['routes', ])],
             ['Parkeren', reverse('a4d_page', args=['parkeren', ])]
+            ['Veelgestelde vragen', reverse('a4d_page', args=['faq', ])]
         ]],
         ['Foto&rsquo;s', reverse('a4d_gallery')],
         ['Over ons', '#', [

@@ -6,7 +6,8 @@ pages_slug_titles = {
     'inschrijven': 'Inschrijven',
     'controles': 'Startbureau en controles',
     'routes': 'Routes',
-    'parkeren': 'Parkeren'
+    'parkeren': 'Parkeren',
+    'faq': 'Veelgestelde vragen',
 }
 
 #['over', 'verkeersregelaars', 'dank', 'sgwb', 'inschrijven', 'controles', 'routes', 'parkeren']

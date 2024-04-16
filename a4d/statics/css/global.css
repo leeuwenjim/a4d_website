@@ -1,9 +1,9 @@
 * {
 	box-sizing: border-box;
 	--light-background-color: #eeeeee;
-	--dark-color: #1b1c1d;
-	--dark-background-color: #1b1c1d;
-	--menu-height: 50px;
+	--dark-color: #3a5775;
+	--dark-background-color: #3a5775;
+	--menu-height: 5rem;
 	--font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	--font-color-light: #efefef;
 	--font-color-hover: #bfbfbf;

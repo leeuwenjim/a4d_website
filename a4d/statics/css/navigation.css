@@ -148,8 +148,8 @@
 }
 
 @media screen and (max-width: 500px){
-	*{
-		font-size: 0.75rem;
+	.topnav a, .topnav div.icon, .dropdown-content a, .dropdown .dropbtn{
+		font-size: 1.5rem;
 	}
 	
 	.test {

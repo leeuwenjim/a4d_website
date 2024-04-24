@@ -1,6 +1,7 @@
 * {
 	box-sizing: border-box;
-	--light-background-color: #eeeeee;
+	--main-background-color: 
+		linear-gradient(to bottom, #3a5775 1rem, #8791a7 3rem,#acb0c1 4rem, #ffffff 6rem);
 	--dark-color: #3a5775;
 	--dark-background-color: #3a5775;
 	--menu-height: 5rem;
@@ -10,8 +11,8 @@
 	--menu-hover-background: #0b0c0d;
 	--menu-item-hover-background: #dddddd;
 	--light-blue-background: #ccccff;
-	--container-background: rgba(204, 204, 255, 0.88823529411764706);
-	--container-background-border: rgba(204, 204, 255, 0.96);
+	--container-background: rgba(97, 144, 192, 0.6);
+	--container-background-border: rgba(58, 87, 117, 0.6);
 	--content-text-size: 17px;
 
 	--side-menu-dark-color: #4242a6;
@@ -23,9 +24,9 @@
 	--modal-border-color: #888888;
 	--modal-header-background: #4242a6;
 
-	--pagination-item-border-color: #BABAFF;
-	--pagination-item-background: #4242a6;
-	--pagination-item-background-hover: rgba(204, 204, 255, 0.88823529411764706);
+	--pagination-item-border-color: rgba(58, 87, 117, 1);
+	--pagination-item-background: rgba(58, 87, 117, 0.6);
+	--pagination-item-background-hover: rgba(58, 87, 117, 1);
 
 	--page-table-border-color: #dddddd;
 	--page-table-even-row-background: #f2f2f2;
@@ -63,6 +64,5 @@
 body {
 	padding: 0px;
 	margin: 0px;
-	background-color: var(--light-background-color);
 }
 

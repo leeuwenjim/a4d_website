@@ -15,7 +15,7 @@
 /* Modal Content */
 .modal_content {
     position: relative;
-    background-color: var(--light-background-color);
+    background-color: var(--main-background-color);
     margin: auto;
     padding: 0;
     border: 1px solid var(--modal-border-color);

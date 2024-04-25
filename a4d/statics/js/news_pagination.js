@@ -27,7 +27,7 @@ class NewsPagination {
 
         return $('<div>', {'class': 'content-container'}).append(
             $('<h2>', {'class': 'news_header'}).text(data.title),
-            $('<small>').text(data.published_on),
+            $('<p>', {'class': 'small'}).text(data.published_on),
             $('<p>').html(data.content.replace(/(?:\r\n|\r|\n)/g, '<br />')),
             (data.link ?
                 $('<a>', {'href': data.link}).text('Zie meer...')

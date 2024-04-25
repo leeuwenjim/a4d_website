@@ -56,27 +56,39 @@
     padding: 7rem 0;
     background: var(--main-background-color);
     }
-    
+ 
+td{
+    text-align: center;
+}    
+
 .content-table {
     border-collapse: collapse;
-    margin: auto;
-    padding: 0px;
-    width: 80%;
+    width: 100%;
     table-layout: fixed;
-    height: 1px;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .ct-menu {
-	width: 200px;
+	width: 100%;
 	vertical-align: top;
+    display: flex;
+    justify-content: center;
 }
 
 .ct-spacer {
-	width: 40px;
+	width: 0;
 }
 
 .ct-content {
+    width: 80%;
 	vertical-align: top;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.ct-content .content-container{
+    width: 90%;
 }
 
 .content-container {
@@ -144,7 +156,6 @@
     font-size: var(--content-text-size);
 }
 
-
 /*
 
  _______  __   __  _______  ___      ___        _______  _______  ______    _______  _______  __    _
@@ -187,7 +198,7 @@
         font-size: 1.2rem;
     }
 
-    .content-container h3 h4 h5 h6{
+    .content-container h3, h4, h5, h6{
         font-size: 1rem;
     }
 

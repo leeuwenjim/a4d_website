@@ -1,11 +1,11 @@
 
 
 .gallery-menu {
-	width: 200px;
-	float: left;
+	width: 80%;
 	border-radius: 15px;
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 15px 15px 0px rgba(97, 144, 192, 0.3);
 	border: 2px solid var(--side-menu-border-color);
+	font-family: var(--font-family);
 }
 
 .gallery-menu .gm-header {
@@ -14,6 +14,7 @@
 	display: block;
 	padding: 12px;
 	text-decoration: none;
+	transition: background-color 500ms, color 500ms;
 }
 
 .gallery-menu .gm-header:hover {
@@ -25,12 +26,12 @@
 	color: var(--dark-color);
 	display: block;
 	padding: 12px;
-	padding-left: 26px;
 	text-decoration: none;
+	transition: background-color 500ms, color 500ms;
 }
 
 .gallery-menu .gm-item:hover {
-	background-color: var(----side-menu-item-background-hover);
+	background-color: var(--side-menu-item-background-hover);
 }
 
 .gallery-menu *:first-child {
@@ -42,3 +43,8 @@
 	border-bottom-right-radius: 15px;
 }
 
+@media screen and (max-width: 500px) {
+	.gallery-menu a{
+		font-size: 0.756rem;
+	}
+}

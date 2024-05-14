@@ -1,26 +1,21 @@
 <footer class="footer">
-    <div class="footer_columns">
-        <div class="footer_column">
-            <h3 class="footer_contact_header">Avondvierdaagse Hoevelaken</h3>
-            <div class="footer_contact">Contact: <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>
-            </div>
-            <div class="footer_contact"><a href="https://www.sgwb.nl/">Sticht Gooise Wandelspot Bond</a></div>
-            <div class="footer_hidden_divider">&nbsp;</div>
-            <div class="footer_contact">&#169; {% now "Y" %} Avondvierdaagse Hoevelaken</div>
-            <div class="footer_hidden_divider">&nbsp;</div>
-            <div class="footer_contact">Website door Jim van Leeuwen</div>
+    <div class="footer_column">
+        <h3 class="footer_contact_header">Avondvierdaagse Hoevelaken</h3>
+        <div class="footer_contact">Contact: <a href="mailto:{{ CONTACT_EMAIL }}">{{ CONTACT_EMAIL }}</a>
         </div>
-        <div class="footer_column">
+        <div class="footer_contact"><a href="https://www.sgwb.nl/">Sticht Gooise Wandelspot Bond</a></div>
+        <div class="footer_hidden_divider">&nbsp;</div>
+        <div class="footer_contact">&#169; {% now "Y" %} Avondvierdaagse Hoevelaken</div>
+        <div class="footer_hidden_divider">&nbsp;</div>
+        <div class="footer_contact">Website door Jim van Leeuwen</div>
+    </div>
+    <div class="footer_column">
 
-            {% for item in thanx %}
-                {% if forloop.first %}
-                    <h3 class="footer_thanx_header">Bijzondere dank aan:</h3>
-                {% endif %}
-                <div class="footer_thanx">{{ item }}</div>
-            {% endfor %}
-        </div>
-        <div class="footer_column hidden">
-
-        </div>
+        {% for item in thanx %}
+            {% if forloop.first %}
+                <h3 class="footer_thanx_header">Bijzondere dank aan:</h3>
+            {% endif %}
+            <div class="footer_thanx">{{ item }}</div>
+        {% endfor %}
     </div>
 </footer>

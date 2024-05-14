@@ -8,69 +8,73 @@
 }
 
 .topnav {
-	overflow: hidden;
+	/* overflow: hidden; */
 	background-color: var(--dark-background-color);
+	display: flex;
+	justify-content: center;
+	position: relative;
 }
 
-.topnav a {
-	float: left;
-	display: block;
+.topnav a, .topnav div.icon {
+	display: inline-block;
 	color: var(--font-color-light);
+	background-color: var(--dark-background-color);
 	text-align: center;
 	text-decoration: none;
-	font-size: 22px;
+	font-size: 2rem;
 	font-family: var(--font-family);
 	height: var(--menu-height);
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 0.25rem 2rem;
 	line-height: var(--menu-height);
+	transition: background-color 500ms, color 500ms;
+}
+
+.topnav a:hover, .topnav div.icon:hover {
+	background-color: var(--menu-hover-background);
+	color: var(--font-color-hover);
 }
 
 .dropdown {
-	float: left;
-	overflow: hidden;
+	color: var(--font-color-light);
+	background-color: var(--dark-background-color);
+	display: inline-block;
+	text-align: center;
 }
 
 .dropdown .dropbtn {
 	color: var(--font-color-light);
 	text-align: center;
 	text-decoration: none;
-	font-size: 22px;
+	font-size: 2rem;
 	font-family: var(--font-family);
 	height: var(--menu-height);
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 0.25rem 2rem;
 	line-height: var(--menu-height);
+	transition: background-color 500ms, color 500ms;
 }
 
 .dropdown-content {
 	display: none;
 	position: absolute;
 	background-color: var(--font-color-light);
-	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.4);
 	z-index: 100;
 }
 
 .dropdown-content a {
-	float: none;
 	display: block;
 	color: var(--dark-color);
+	background-color: transparent;
 	text-align: left;
 	text-decoration: none;
-	font-size: 22px;
+	font-size: 1.5rem;
 	font-family: var(--font-family);
 	height: var(--menu-height);
-	padding-left: 15px;
-	padding-right: 15px;
+	padding: 0.1rem 1.5rem;
 	line-height: var(--menu-height);
+	
 }
 
-.topnav a:hover {
-	background-color: var(--menu-hover-background);
-	color: var(--font-color-hover);
-	text-decoration: underline;
-}
 
 .dropdown:hover .dropbtn {
 	background-color: var(--menu-hover-background);
@@ -84,56 +88,56 @@
 
 .dropdown:hover .dropdown-content {
 	display: block;
+	animation-name: slow-dropdown;
+	animation-duration: 500ms;
 }
 
-.topnav a.home_nav {
-	background-color: var(--menu-hover-background);
-	color: white;
-}
 
-.topnav .icon {
+.topnav div.icon {
 	display: none;
 }
 
-@media screen and (max-width: 775px) {
+@media screen and (max-width: 900px) {
 
-    .topnav a:not(:first-child), .dropdown .dropbtn {
+	.topnav {
+		justify-content: space-between;
+		flex-direction: row-reverse;
+	}
+
+    .topnav a:not(:first-child), .dropdown .dropbtn, .responsive-menu {
         display: none;
     }
 
-    .topnav a.icon {
+    .topnav div.icon {
         float: right;
         display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
     }
 
-    .topnav.responsive {
-        position: relative;
+	.test {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+	.topnav.responsive .responsive-menu {
+        display: flex;
+		flex-direction: column;
+		z-index: 100;
     }
 
     .topnav.responsive .icon {
-        position: absolute;
         right: 0px;
         top: 0;
-    }
-
-    .fa {
-        height: var(--menu-height);
-        line-height: var(--menu-height);
-        vertical-align: middle;
+		display: flex;
+		align-items: center;
+		justify-content: center;
     }
 
     .topnav.responsive a {
-        float: none;
         display: block;
         text-align: left;
-    }
-
-    .topnav.responsive .dropdown {
-        float: none;
-    }
-
-    .topnav.responsive .dropdown-content {
-        position: relative;
     }
 
     .topnav.responsive .dropdown .dropbtn {
@@ -141,4 +145,19 @@
         width: 100%;
         text-align: left;
     }
+}
+
+@media screen and (max-width: 500px){
+	.topnav a, .topnav div.icon, .dropdown-content a, .dropdown .dropbtn{
+		font-size: 1.5rem;
+	}
+	
+	.test {
+		flex-direction: column-reverse;
+	}
+}
+
+@keyframes slow-dropdown {
+	0% 		{opacity: 0;}
+	100%	{opacity: 1;}
 }

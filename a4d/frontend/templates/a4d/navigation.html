@@ -1,22 +1,27 @@
 <nav class="navigation">
     <div class="topnav" id="menu">
         <a href="{% url 'a4d_home' %}" class="home_nav">Home</a>
-        {% for item in menu %}
-            {% if item.2 %}
-                <div class="dropdown">
-                    <div class="dropbtn">{{ item.0|safe }} <i class="fa fa-caret-down"></i></div>
-                    <div class="dropdown-content">
-                        {% for child in item.2 %}
-                            <a href="{{ child.1 }}">{{ child.0|safe }}</a>
-                        {% endfor %}
-                    </div>
+        <div class="test">
+            <div class="responsive-menu">
+                {% for item in menu %}
+                    {% if item.2 %}
+                        <div class="dropdown">
+                            <div class="dropbtn">{{ item.0|safe }}</div>
+                            <div class="dropdown-content">
+                                {% for child in item.2 %}
+                                    <a href="{{ child.1 }}">{{ child.0|safe }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{{ item.1 }}">{{ item.0|safe }}</a>
+                    {% endif %}
+                {% endfor %}
                 </div>
-            {% else %}
-                <a href="{{ item.1 }}">{{ item.0|safe }}</a>
-            {% endif %}
-        {% endfor %}
-        <a href="javascript:void(0);" class="icon" onclick="menu_function()">
-            <i class="fa fa-bars" id="menu_icon"></i>
-        </a>
+                <div class="icon" onclick="menu_function()">
+                    <i class="fa fa-bars" id="menu_icon"></i>
+                </div>
+        </div>
+        
     </div>
 </nav>

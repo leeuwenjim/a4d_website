@@ -24,7 +24,12 @@ class NewsSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'published_on']
 
     def get_published_on(self, instance: News):
-        return instance.publish_date.strftime('%-d-%-m-%Y')
+        print('-'*50)
+        print(instance)
+        print(instance.publish_date)
+        print(type(instance.publish_date))
+        print('-' * 50)
+        return instance.publish_date.strftime('%d-%m-%Y')
 
 
 class AlbumSerializer(serializers.ModelSerializer):

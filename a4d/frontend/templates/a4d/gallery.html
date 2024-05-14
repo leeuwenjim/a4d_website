@@ -2,13 +2,14 @@
 <html>
 <head>
     <title>Avondvierdaagse Hoevelaken</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0; " />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/navigation.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/gallery.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/grid-gallery.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/grid-gallery.css' %}"/>
 </head>
 <body>
 <header id="banner">
@@ -31,7 +32,6 @@
 
                 </div>
             </td>
-            <td class="ct-spacer"></td>
             <td class="ct-content">
                 <div class="content-container">
                     <h2 class="content-header">Foto&rsquo;s</h2>
@@ -51,7 +51,7 @@
 
 {% include 'a4d/footer.html' %}
 
-<script type="text/javascript" src="{% static 'js/grid-gallery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/grid-gallery.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/gallery.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
 </body>

@@ -50,49 +50,56 @@
 */
 
 #content {
-    min-height: 60vh;
-	padding-top: 40px;
-	padding-bottom: 40px;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 7rem 0;
+    background: var(--main-background-color);
+    }
+ 
+td{
+    text-align: center;
+}    
 
 .content-table {
     border-collapse: collapse;
-    margin: auto;
-    padding: 0px;
-    width: 80%;
+    width: 100%;
     table-layout: fixed;
-    height: 1px;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .ct-menu {
-	width: 200px;
+	width: 100%;
 	vertical-align: top;
+    display: flex;
+    justify-content: center;
 }
 
 .ct-spacer {
-	width: 40px;
+	width: 0;
 }
 
 .ct-content {
+    width: 80%;
 	vertical-align: top;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.ct-content .content-container{
+    width: 90%;
 }
 
 .content-container {
 	background: var(--container-background);
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-	border: 2px solid rgba(204, 204, 255, 0.96);
+	box-shadow: 0px 15px 15px 0px rgba(97, 144, 192, 0.3);
+	border: 2px solid var(--container-background-border);
 	border-radius: 15px;
-	padding-left: 20px;
-	padding-right: 20px;
+    padding: 2rem;
+    width: 60%;
     font-family: var(--font-family);
     font-size: var(--content-text-size);
-}
-
-.content-container.full-width {
-    width: 60%;
-    margin: auto;
-    padding-bottom: 20px;
-    margin-bottom: 15px;
 }
 
 .content-header {
@@ -104,37 +111,37 @@
 .content-container h1 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 34px;
+    font-size: 2.5rem;
 }
 
 .content-container h2 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 30px;
+    font-size: 1.875rem;
 }
 
 .content-container h3 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .content-container h4 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .content-container h5 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .content-container h6 {
     font-family: var(--font-family);
     color: var(--dark-color);
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .content-container p {
@@ -148,7 +155,6 @@
     color: var(--dark-color);
     font-size: var(--content-text-size);
 }
-
 
 /*
 
@@ -176,5 +182,31 @@
     */
     #banner-text {
         font-size: 40px;
+    }
+
+    .content-container{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .content-container h1{
+        font-size: 2rem;
+    }
+    
+    .content-container h2{
+        font-size: 1.2rem;
+    }
+
+    .content-container h3, h4, h5, h6{
+        font-size: 1rem;
+    }
+
+    .content-container p, p {
+        font-size: 0.8rem;
+    }
+
+    .content-container{
+        width: 90%;
     }
 }

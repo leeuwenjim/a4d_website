@@ -1,17 +1,38 @@
+.content-container p.small {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+    font-size: 14px;
+    margin: 0 0.5rem 0;
+}
+
+.news_content{
+    background: var(--main-background-color);
+    display: flex;  
+    align-items: center;
+    flex-direction: column;
+}
+
+#news_items{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
 .page_header {
     font-family: var(--font-family);
     color: var(--dark-color);
     font-size: 40px;
-    width: 60%;
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    padding: 2rem;
+    margin-top: 5rem;
 }
 
 .pagination {
     display: inline-block;
     text-align: center;
-    margin-bottom: 20px;
+    padding: 2rem ;
+    margin-bottom: 5rem;
 }
 
 .pagination .item {
@@ -36,3 +57,5 @@
 .news_header {
     margin-bottom: 0px;
 }
+
+

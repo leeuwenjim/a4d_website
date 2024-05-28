@@ -24,7 +24,7 @@
             <h2 class="news_header">{{ item.title }}</h2>
             <small>{{ item.publish_date }}</small>
             <p>
-                {{ item.content }}
+                {{ item.content|safe }}
             </p>
             {% if item.link %}
                 <a href="{{ item.link }}">Zie meer...</a>

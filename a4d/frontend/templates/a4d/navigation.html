@@ -5,14 +5,14 @@
             <div class="responsive-menu">
                 {% for item in menu %}
                     {% if item.2 %}
-                        <div class="dropdown">
+                        <a href="#" class="dropdown">
                             <div class="dropbtn">{{ item.0|safe }}</div>
                             <div class="dropdown-content">
                                 {% for child in item.2 %}
                                     <a href="{{ child.1 }}">{{ child.0|safe }}</a>
                                 {% endfor %}
                             </div>
-                        </div>
+                        </a>
                     {% else %}
                         <a href="{{ item.1 }}">{{ item.0|safe }}</a>
                     {% endif %}

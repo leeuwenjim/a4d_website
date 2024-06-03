@@ -20,14 +20,14 @@ def get_menu():
             ['Routes', reverse('a4d_page', args=['routes', ])],
             ['Parkeren', reverse('a4d_page', args=['parkeren', ])],
             ['Veelgestelde vragen', reverse('a4d_page', args=['faq', ])],
-        ]],
+        ], 'info'],
         ['Foto&rsquo;s', reverse('a4d_gallery')],
         ['Over ons', '#', [
             ['A4D Hoevelaken', reverse('a4d_page', args=['over', ])],
             ['Verkeersregelaars', reverse('a4d_page', args=['verkeersregelaars', ])],
             ['Dank aan', reverse('a4d_page', args=['dank', ])],
             ['SGWB', reverse('a4d_page', args=['sgwb', ])],
-        ]],
+        ], 'about'],
     ]  # 'over', 'verkeersregelaars', 'dank', 'sgwb', 'inschrijven', 'controles', 'routes', 'parkeren']
 
 

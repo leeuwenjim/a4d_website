@@ -177,4 +177,4 @@ SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', 'a4d_session')
 
 CONTACT_MAIL = os.getenv('CONTACT_MAIL', 'avondvierdaagsehoevelaken@ziggo.nl')
 
-STATICS_VERSION = '1.3'
+STATICS_VERSION = '1.4'

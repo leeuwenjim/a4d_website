@@ -17,7 +17,7 @@ services:
   app:
     build:
       context: ./a4d
-    image: a4d_app-staging-2.0
+    image: a4d_app-${BUILD}-${VERSION}
     restart: always
     expose:
       - 8000

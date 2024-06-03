@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     gridGallery({
         selector: ".gg-box",
         darkMode: false,
@@ -7,5 +7,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         rowHeight: 200,
         columnWidth: 200,
     });
+
 });
 

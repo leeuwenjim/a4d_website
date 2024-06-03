@@ -6,8 +6,8 @@
                 {% for item in menu %}
                     {% if item.2 %}
                         <div class="dropdown">
-                            <div class="dropbtn">{{ item.0|safe }}</div>
-                            <div class="dropdown-content">
+                            <div class="dropbtn" onclick="dropdown_click_{{item.3}}()">{{ item.0|safe }}</div>
+                            <div id="{{ item.3 }}_dropdown" class="dropdown-content">
                                 {% for child in item.2 %}
                                     <a href="{{ child.1 }}">{{ child.0|safe }}</a>
                                 {% endfor %}

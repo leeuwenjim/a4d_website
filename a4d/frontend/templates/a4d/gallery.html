@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>Avondvierdaagse Hoevelaken</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0; " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0; " />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/global.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/navigation.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/gallery.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/grid-gallery.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/grid-gallery.css' %}?v={{STATICS_VERSION}}"/>
 </head>
 <body>
 <header id="banner">
@@ -39,7 +39,7 @@
                     <div class="gg-container">
                         <div class="gg-box">
                             {% for image in images %}
-                                <img src="{{ image }}"/>
+                                <img src="{{ image }}" style="max-width: 200px; max-height: 200px"/>
                             {% endfor %}
                         </div>
                     </div>
@@ -51,8 +51,8 @@
 
 {% include 'a4d/footer.html' %}
 
-<script type="text/javascript" src="{% static 'js/grid-gallery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/gallery.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/menu.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/grid-gallery.js' %}?v={{STATICS_VERSION}}"></script>
+<script type="text/javascript" src="{% static 'js/gallery.js' %}?v={{STATICS_VERSION}}"></script>
+<script type="text/javascript" src="{% static 'js/menu.js' %}?v={{STATICS_VERSION}}"></script>
 </body>
 </html>

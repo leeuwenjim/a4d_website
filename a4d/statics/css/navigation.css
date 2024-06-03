@@ -86,10 +86,14 @@
 	color: var(--dark-color);
 }
 
-.dropdown:hover .dropdown-content {
+/*.dropdown:hover .dropdown-content {
 	display: block;
 	animation-name: slow-dropdown;
 	animation-duration: 500ms;
+}*/
+
+.show {
+	display: block;
 }
 
 

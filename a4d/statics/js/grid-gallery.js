@@ -2,6 +2,7 @@ const root=document.querySelector("body,  html");
 const container=document.querySelector(".gg-container");
 const images=document.querySelectorAll(".gg-box > img");
 const l=images.length;
+var swipe_start_x = 0;
 
 for(var i=0; i<l; i++) {
     images[i].addEventListener("click", function(h) {
@@ -50,15 +51,28 @@ for(var i=0; i<l; i++) {
 
     root.addEventListener("keydown", function(s) {
         if(s.keyCode==37||s.keyCode==38) {
-        d();
+        d(); // prev
         }
         if(s.keyCode==39||s.keyCode==40) {
-            j();
+            j(); // next
         }
         if(s.keyCode==27) {
             m();
         }
     });
+
+    root.addEventListener('touchstart', e => {
+        swipe_start_x = e.changedTouches[0].screenX;
+    });
+    root.addEventListener('touchend', e => {
+        var swipe_end_x = e.changedTouches[0].screenX;
+        if (swipe_end_x < swipe_start_x) {
+            j();
+        }
+        if (swipe_end_x > swipe_start_x) {
+            d();
+        }
+    })
 
     e.addEventListener("click", d);
     b.addEventListener("click", j);

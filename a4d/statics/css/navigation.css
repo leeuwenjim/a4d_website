@@ -156,7 +156,7 @@
 		font-size: 1.5rem;
 	}
 	
-	.test {
+	.test {	
 		flex-direction: column-reverse;
 	}
 }

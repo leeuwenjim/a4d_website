@@ -14,12 +14,12 @@ class Modal {
         }
         this.modal = settings.modal;
         if (this.modal.find('.close').length > 0) {
-            this.modal.find('.close').on('click', () => {
+            this.modal.find('.close').off('click').on('click', () => {
                 this.close()
             });
         }
         if (this.modal.find('.accept').length > 0 && settings.onAccept) {
-            this.modal.find('.accept').on('click', () => {
+            this.modal.find('.accept').off('click').on('click', () => {
                 var result = this.settings.onAccept(this);
                 if (result || result === undefined) {
                     this.close()
@@ -27,7 +27,7 @@ class Modal {
             });
         }
         if (this.modal.find('.deny').length > 0) {
-            this.modal.find('.deny').on('click', () => {
+            this.modal.find('.deny').off('click').on('click', () => {
                 var result = undefined;
                 if (this.settings.onDeny) {
                     result = this.settings.onDeny(this);

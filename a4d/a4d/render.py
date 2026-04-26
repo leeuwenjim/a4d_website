@@ -53,7 +53,11 @@ def __render_table(table_data):
     content += '</table>'
     return content
 
-def render_page_content(page_data: str):
+
+def __render_image(image_data):
+    return f'<img class="sponsor-image" src="{image_data["url"]}" />'
+
+def render_page_content(page_data: str, extra_page_data: str = None):
     data_blocks = json.loads(page_data)
 
     render_functions = {
@@ -61,12 +65,18 @@ def render_page_content(page_data: str):
         'paragraph': __render_paragraph,
         'list': __render_list,
         'delimiter': __render_delimitter,
-        'table': __render_table
+        'table': __render_table,
+        'image': __render_image,
     }
 
     rendered_data = ''
 
     for block in data_blocks:
         rendered_data += render_functions[block['type']](block['data'])
+
+    if (extra_page_data):
+        for block in extra_page_data:
+            rendered_data += render_functions[block['type']](block['data'])
+
 
     return mark_safe(rendered_data)

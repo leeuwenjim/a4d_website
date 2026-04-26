@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
+import time
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+RUNNING_DEVSERVER = (len(sys.argv) > 1 and sys.argv[1] == 'runserver')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -178,3 +181,5 @@ SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', 'a4d_session')
 CONTACT_MAIL = os.getenv('CONTACT_MAIL', 'info@avondvierdaagsehoevelaken.nl')
 
 STATICS_VERSION = '26.3'
+if RUNNING_DEVSERVER:
+    STATICS_VERSION = time.time_ns()

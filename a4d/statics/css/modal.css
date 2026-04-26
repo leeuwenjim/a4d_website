@@ -15,7 +15,7 @@
 /* Modal Content */
 .modal_content {
     position: relative;
-    background-color: var(--main-background-color);
+    background-color: var(--model-container-background);
     margin: auto;
     padding: 0;
     border: 1px solid var(--modal-border-color);
@@ -75,6 +75,7 @@
 }
 
 .modal_body {
+    background-color: var(--model-container-background);
     padding: 2px 16px;
 }
 

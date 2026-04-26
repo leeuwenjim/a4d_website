@@ -64,3 +64,31 @@ class DetailApiView(APIView):
 
         self.response = self.finalize_response(request, response, *args, **kwargs)
         return self.response
+
+def create_header_data(text: str, size: int):
+    return {
+            'id': 'gen-header',
+            'type': 'header',
+            'data': {
+                'level': size,
+                'text': text
+            }
+        }
+
+def create_image_data(url: str):
+    return {
+        'id': 'gen-image',
+        'type': 'image',
+        'data': {
+            'url': url
+        }
+    }
+
+def create_text_data(text: str):
+    return {
+        'id': 'gen-paragraph',
+        'type': 'paragraph',
+        'data': {
+            'text': text
+        }
+    }

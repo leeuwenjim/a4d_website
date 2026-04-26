@@ -2,13 +2,14 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import render, reverse
 from rest_framework.request import Request
 from django.conf import settings
-from backend.models import ThanxToModel, Page, News, Album, Photo
+from backend.models import ThanxToModel, Page, News, Album, Photo, Sponsor
 from a4d.utils import pages_slug_titles
 from a4d.render import render_page_content
 from backend.serializers import NewsSerializer
 from backend.pagination import ApiRestPagination
 import os
 from django.http import HttpResponse
+from backend.utils import create_header_data, create_image_data, create_text_data
 
 
 def get_menu():
@@ -53,7 +54,21 @@ def page_view(request, page: str):
         raise Http404('Invalid page')
 
     page_obj = Page.get_page_from_slug(page)
-    rendered_page = render_page_content(page_obj.content)
+
+    extra_page_data = None
+    if (page == 'dank'):
+        extra_page_data = list()
+        for sponsor in Sponsor.objects.all().order_by('name'):
+            extra_page_data.append(create_header_data(sponsor.name, 3))
+            if sponsor.content:
+                extra_page_data.append(create_text_data(sponsor.content.replace("\r\n", "<br />")))
+            if (sponsor.logo):
+                extra_page_data.append(create_image_data(sponsor.logo.url))
+            if (sponsor.extra):
+                extra_page_data.append(create_image_data(sponsor.extra.url))
+
+
+    rendered_page = render_page_content(page_obj.content, extra_page_data)
 
     context = {
         'menu': get_menu(),

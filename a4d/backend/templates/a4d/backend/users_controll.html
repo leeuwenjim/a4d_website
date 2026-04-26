@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}?v={{STATICS_VERSION}}">
 {% endblock %}
 
 {% block content %}
@@ -88,7 +88,7 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="{% static 'js/modal.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/backend/users.js' %}"></script>
+<script src="{% static 'js/modal.js' %}?v={{STATICS_VERSION}}" type="text/javascript"></script>
+<script src="{% static 'js/backend/users.js' %}?v={{STATICS_VERSION}}"></script>
 
 {% endblock %}

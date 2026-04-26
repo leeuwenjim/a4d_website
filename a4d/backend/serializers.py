@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import ThanxToModel, News, Album, Photo
+from .models import ThanxToModel, News, Album, Photo, Sponsor
 
 
 class ThanxToSerializer(serializers.ModelSerializer):
@@ -31,6 +31,25 @@ class NewsSerializer(serializers.ModelSerializer):
         print('-' * 50)
         return instance.publish_date.strftime('%d-%m-%Y')
 
+class SponsorSerializer(serializers.ModelSerializer):
+    logo_url = serializers.SerializerMethodField()
+    extra_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Sponsor
+        fields = ['id', 'name', 'content', 'logo_url', 'extra_url']
+        read_only_fields = ['id', 'logo_url', 'extra_url']
+    
+    def get_logo_url(self, instance: Sponsor):
+        print(instance)
+        if instance.logo:
+            return instance.logo.url
+        return ""
+    
+    def get_extra_url(self, instance: Sponsor):
+        if (instance.extra):
+            return instance.extra.url
+        return ""
 
 class AlbumSerializer(serializers.ModelSerializer):
     class Meta:

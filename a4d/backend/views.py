@@ -5,10 +5,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, resolve
 from django.views.decorators.csrf import csrf_exempt
 
+
 from a4d.utils import pages_slug_titles
 from .forms import LoginForm, UserCreateForm
 from .decorators import is_authenticated
-from .models import Album
+from .models import Album,Sponsor
 
 
 def get_pages(slug):
@@ -16,6 +17,7 @@ def get_pages(slug):
         [reverse('a4d_beheer'), 'Controlepaneel', bool(slug == 'home')],
         [reverse('a4d_beheer_account'), 'Account', bool(slug == 'account')],
         [reverse('a4d_beheer_users'), 'Beheerders', bool(slug == 'users')],
+        [reverse('a4d_beheer_sponsors'), 'Sponsoren', bool(slug == 'sponsors')],
         [reverse('a4d_beheer_thanx'), 'Bijzondere dank', bool(slug == 'thanx')],
         [reverse('a4d_beheer_album'), 'Foto\'s', bool(slug == 'album')],
         [reverse('a4d_beheer_news'), 'Nieuws', bool(slug == 'news')],
@@ -129,6 +131,13 @@ def news_controll(request):
 
     return render(request, 'a4d/backend/news_controll.html', context)
 
+
+def sponsor_control(request):
+    context = {
+        'pages': get_pages('sponsors'),
+        'sponsors': Sponsor.objects.all().order_by("name"),
+    }
+    return render(request, 'a4d/backend/sponsor_control.html', context)
 
 @is_authenticated
 def edit_page(request, slug):

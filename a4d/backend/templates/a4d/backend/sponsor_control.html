@@ -1,0 +1,104 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+{% block head %}
+
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}?v={{STATICS_VERSION}}" />
+    {% comment %}<link rel="stylesheet" href="{% static 'css/news.css' %}" />{% endcomment %}
+
+
+{% endblock %}
+
+{% block content %}
+    <div class="content-container">
+        <h1>Nieuwe Sponsor</h1>
+
+        <div class="error_container">
+
+        </div>
+
+        <table style="width: 100%">
+            <tr>
+                <td>Sponsor:</td>
+                <td><input style="width: 100%" type="text" maxlength="100" placeholder="Sponsor..." id="input_title"></td>
+            </tr>
+            <tr>
+                <td>Informatie:</td>
+                <td><textarea id="input_content" rows="10" cols="10" style="width: 100%"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right">
+                    <button class="add_button" id="add_button" onclick="create_sponsor_item()">Voeg toe</button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    
+    <div class="content-container">
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Naam:</th>
+                    <th style="width: 100px;">&nbsp;</th>
+                    <th style="width: 100px;">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody id="sponsor_data">
+            
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="modal" id="sponsor_edit_modal">
+        <div class="modal_content">
+            <div class="modal_header">
+                <span class="close">&times;</span>
+                <h2>Bericht bewerken</h2>
+            </div>
+            <div class="modal_body">
+                <table style="width: 100%">
+                    <tr>
+                        <td colspan="2" id="modal_error_container"></td>
+                    </tr>
+                    <tr>
+                        <td>Titel:</td>
+                        <td><input style="width: 100%" type="text" maxlength="100" placeholder="Titel..."
+                                   id="input_edit_title"></td>
+                    </tr>
+                    <tr>
+                        <td>Bericht:</td>
+                        <td><textarea id="input_edit_content" rows="5" cols="10" style="width: 100%"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Logo:</td>
+                        <td>
+                            <span id="current_logo"></span><br />
+                            <input type="file" id="input_logo" name="input_logo" accept="image/png, image/jpeg" />
+                            <button id="delete_logo" class="delete_button">Verwijder</button>
+                        </td>
+                    </tr>   
+                    <tr>
+                        <td>Extra:</td>
+                        <td>
+                            <span id="current_extra"></span><br />
+                            <input type="file" id="input_extra" name="input_extra" accept="image/png, image/jpeg" />
+                            <button id="delete_extra" class="delete_button">Verwijder</button>
+                        </td>
+                    </tr>  
+                </table>
+            </div>
+            
+            <div class="modal_footer">
+                <button class="accept">Opslaan</button>
+                <button class="deny">Annuleer</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'js/modal.js' %}?v={{STATICS_VERSION}}" type="text/javascript"></script>
+    <script src="{% static 'js/backend/sponsor.js' %}?v={{STATICS_VERSION}}"></script>
+{% endblock %}

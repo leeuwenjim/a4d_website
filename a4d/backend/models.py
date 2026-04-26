@@ -12,6 +12,12 @@ def news_image_upload_location(instance, filename):
 def picture_upload_location(instance: 'Photo', filename):
     return 'images/photos/{}/{}/{}'.format(instance.album.year, instance.album.title, filename)
 
+def sponsor_logo_upload(instance: 'Sponsor', filename):
+    return 'images/sponsor/logo/{}'.format(filename)
+
+def sponsor_extra_image_upload(instance: 'Sponsor', filename):
+    return 'images/sponsor/extra/{}'.format(filename)
+
 class News(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     content = models.TextField()
@@ -70,3 +76,16 @@ class Album(models.Model):
 class Photo(models.Model):
     album = models.ForeignKey(Album, on_delete=models.PROTECT, null=False, blank=False, related_name='photos')
     image = models.ImageField(upload_to=picture_upload_location, max_length=255, null=False, blank=False)
+
+
+class Sponsor(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+    content = models.TextField()
+    logo = models.ImageField(upload_to=sponsor_logo_upload, null=True, blank=True, max_length=255)
+    extra = models.ImageField(upload_to=sponsor_extra_image_upload, null=True, blank=True, max_length=255)
+
+    def __str__(self):
+        return f"<Sponsor: {self.name}>"
+    
+    def __repr__(self):
+        return self.__str__()

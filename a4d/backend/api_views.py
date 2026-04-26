@@ -9,9 +9,9 @@ from backend.utils import DetailApiView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from .models import News, ThanxToModel, Page, Album, Photo
+from .models import News, ThanxToModel, Page, Album, Photo, Sponsor
 from .pagination import ApiRestPagination
-from .serializers import ThanxToSerializer, UserSerializer, NewsSerializer, AlbumSerializer, ImageSerializer
+from .serializers import ThanxToSerializer, UserSerializer, NewsSerializer, AlbumSerializer, ImageSerializer, SponsorSerializer
 from django.db.models import Value as V
 from django.db.models.functions import Concat
 from django.contrib.auth.models import User
@@ -39,6 +39,96 @@ class NewsOverview(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class SponsorOverview(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        data = Sponsor.objects.all().order_by('name')
+
+        return Response(SponsorSerializer(data, many=True).data, status=status.HTTP_200_OK)
+        #data = Sponsor.objects.all().order_by("name")
+        #return Response(SponsorSerializer(data, many=True).data, status=status.HTTP_200_OK)
+    
+    def post(self, request):
+        serializer = SponsorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SponsorDetailview(DetailApiView):
+    permission_classes = [IsAuthenticated]
+
+    model = Sponsor
+    id_name = 'sponsor_id'
+    keyword = 'sponsor'
+
+    def get(self, request, sponsor):
+        return Response(SponsorSerializer(sponsor).data, status=status.HTTP_200_OK)
+    
+    def put(self, request, sponsor):
+        serializer = SponsorSerializer(instance=sponsor, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, sponsor):
+        sponsor.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class SponsorLogoView(DetailApiView):
+
+    permission_classes = [IsAuthenticated]
+
+    model = Sponsor
+    keyword = 'sponsor'
+    id_name = 'sponsor_id'
+
+    def get(self, request, sponsor: Sponsor):
+        data = SponsorSerializer(sponsor).data;
+        return Response({'logo': data['logo_url']}, status=status.HTTP_200_OK)
+
+    def post(self, request, sponsor: Sponsor):
+        sponsor.logo.delete()
+        sponsor.logo = request.data['logo']
+        try:
+            sponsor.save()
+            return Response({'logo': SponsorSerializer(sponsor).data['logo_url']}, status=status.HTTP_202_ACCEPTED)
+        except Exception as e:
+            print(e)
+        return Response({'error': 'Could not save the image'}, status=status.HTTP_400_BAD_REQUEST) 
+
+    def delete(self, request, sponsor: Sponsor):
+        sponsor.logo.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class SponsorExtraView(DetailApiView):
+
+    permission_classes = [IsAuthenticated]
+
+    model = Sponsor
+    keyword = 'sponsor'
+    id_name = 'sponsor_id'
+
+    def get(self, request, sponsor: Sponsor):
+        data = SponsorSerializer(sponsor).data;
+        return Response({'extra': data['extra_url']}, status=status.HTTP_200_OK)
+
+    def post(self, request, sponsor: Sponsor):
+        sponsor.extra.delete()
+        sponsor.extra = request.data['extra']
+        try:
+            sponsor.save()
+            return Response({'extra': SponsorSerializer(sponsor).data['extra_url']}, status=status.HTTP_202_ACCEPTED)
+        except Exception as e:
+            print(e)
+        return Response({'error': 'Could not save the image'}, status=status.HTTP_400_BAD_REQUEST) 
+
+    def delete(self, request, sponsor: Sponsor):
+        sponsor.extra.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class NewsDetails(DetailApiView):
 

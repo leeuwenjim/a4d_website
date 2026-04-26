@@ -75,6 +75,8 @@ class SponsorDetailview(DetailApiView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, sponsor):
+        sponsor.logo.delete()
+        sponsor.extra.delete()
         sponsor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     

@@ -80,7 +80,7 @@ class Photo(models.Model):
 
 class Sponsor(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
-    content = models.TextField()
+    content = models.TextField(null=True, blank=True)
     logo = models.ImageField(upload_to=sponsor_logo_upload, null=True, blank=True, max_length=255)
     extra = models.ImageField(upload_to=sponsor_extra_image_upload, null=True, blank=True, max_length=255)
 

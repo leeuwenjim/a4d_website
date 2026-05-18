@@ -9,7 +9,7 @@ var modal_showing = false;
 function show_albums() {
     if (busy) return;
     busy = true;
-    console.log('hmmm')
+    
     $('#album_view').html('');
 
     $.get('/api/albums/', {}, (data) => {
@@ -115,9 +115,11 @@ function edit_album(album_id, title, year) {
             $.put('/api/albums/' + album_id.toString() + '/', send_data, (data) => {
                 modal_object.enable_buttons();
                 modal_object.close();
+                busy = false;
                 show_albums();
             }).fail(function (xhr, status, error) {
                 modal_object.enable_buttons();
+                busy = false;
                 fail_message($('#modal_error_container'), xhr);
             });
 

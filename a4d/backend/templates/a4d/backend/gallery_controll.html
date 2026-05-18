@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head %}
+
     <link rel="stylesheet" href="{% static 'css/grid-gallery.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/backend/gallery.css' %}"/>
 {% endblock %}
@@ -14,9 +15,23 @@
 
         <div id="upload_errors"></div>
 
-        <input type="file" id="files" name="files" accept="image/*" multiple>
-        <button id="add_button" onclick="upload_images()">Uploaden</button>
+        <!--<input type="file" id="files" name="files" accept="image/*" multiple>-->
 
+  <div class="file-drop" id="drop-zone">
+    <input type="file" id="files" name="files" accept="image/*" multiple>
+    <span class="drop-icon">&#8686;</span>
+    <div class="drop-title">Drop images here</div>
+    <div class="drop-sub">PNG, JPG, GIF, WEBP &mdash; multiple files supported</div>
+    <div class="drop-btn">Browse files</div>
+  </div>
+
+  <div class="file-list" id="file-list">
+    <p class="file-empty" id="empty-hint">No files selected yet</p>
+  </div>
+
+<div class="add-button-div">      
+  <button class="add_button" id="add_button" onclick="upload_images()">Uploaden</button>
+</div>
         <div id="progress_bar">
         </div>
     </div>
@@ -32,5 +47,7 @@
 {% block javascript %}
     <p hidden id="album_id">{{ album.id }}</p>
     <script src="{% static 'js/backend/gallery.js' %}"></script>
+
+
 
 {% endblock %}

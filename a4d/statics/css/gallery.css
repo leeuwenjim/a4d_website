@@ -35,16 +35,27 @@
 }
 
 .gallery-menu *:first-child {
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
 }
 .gallery-menu *:last-child {
-	border-bottom-left-radius: 15px;
-	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+
+.gallery-content-container {
+	width: 100%;
 }
 
 @media screen and (max-width: 500px) {
 	.gallery-menu a{
 		font-size: 0.756rem;
+	}
+}
+
+
+@media screen and (max-width: 775px) {
+	.gallery-menu {
+		width: 100%;
 	}
 }

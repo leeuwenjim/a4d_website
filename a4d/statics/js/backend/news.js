@@ -70,6 +70,7 @@ function create_news_item() {
         create_message($('#error_container'), 'success', 'Bericht aangemaakt', 'Het bericht is succesvol opgeslagen.')
         busy = false;
     }).fail(function (xhr, status, error) {
+        busy = false;
         fail_message($('#error_container'), xhr);
     });
 }
@@ -82,6 +83,7 @@ function delete_news_item(item_id) {
         pagination.load_page(pagination.current_page);
         busy = false;
     }).fail(function (xhr, status, error) {
+        busy = false;
         fail_message($('#error_container'), xhr);
     });
 }

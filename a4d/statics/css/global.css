@@ -1,25 +1,28 @@
 * {
 	box-sizing: border-box;
-	--main-background-color: 
-		linear-gradient(to bottom, #3a5775 1rem, #8791a7 3rem,#acb0c1 4rem, #ffffff 6rem);
-	--dark-color: #3a5775;
-	--dark-background-color: #3a5775;
+	--main-background-color: #f3f4f6;
+	--dark-color: #111827;
+	--dark-background-color: #1C3A6E;
 	--menu-height: 5rem;
-	--font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	--font-color-light: #efefef;
-	--font-color-hover: #bfbfbf;
-	--menu-hover-background: #0b0c0d;
+	--font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+	--font-color-light: #f5f6f7;
+    --font-color-hover: #dae0e6;
+	--menu-hover-background: #102650;
 	--menu-item-hover-background: #dddddd;
 	--light-blue-background: #ccccff;
-	--container-background: rgba(97, 144, 192, 0.6);
-	--container-background-border: rgba(58, 87, 117, 0.6);
-	--content-text-size: 17px;
+    --container-background: #ffffff;
+    --container-background-border: #e2e5ea;
+	--content-text-size: 16px;
+	
+    --text-secondary: #374151;
 
-	--side-menu-dark-color: #3a5775;
-	--side-menu-dark-color-hover: rgb(41, 69, 99);
-	--side-menu-border-color: rgba(58, 87, 117, 0.6);
-	--side-menu-item-background-color: rgba(97, 144, 192, 0.6);
-	--side-menu-item-background-hover: rgba(97, 144, 192, 0.3);
+	--side-menu-dark-color: #1C3A6E;
+	--side-menu-dark-color-hover: #102650;
+	--side-menu-border-color: #B8D0F0;
+	--side-menu-item-background-color: #EEF4FD;
+	--side-menu-item-background-hover: #D9E9FB;
+
 
 	--modal-border-color: #888888;
 	--modal-header-background: #4242a6;
@@ -34,32 +37,49 @@
 	--page-table-uneven-row-background: #fefefe;
 	--page-table-header-background: rgb(66, 66, 166);
 
-	--delete-button-background: red;
-	--delete-button-background-hover: darkred;
-	--delete-button-border-color: darkred;
-	--delete-button-font-color: #efefef;
-	--delete-button-font-color-disabled: #4C2A2A;
-	--delete-button-font-background-disabled: #754141;
+	--delete-button-background: #A32D2D;
+	--delete-button-background-hover: #791F1F;
+	--delete-button-border-color: #C43D3D;
+	--delete-button-font-color: #FFFFFF;
+	--delete-button-font-color-disabled: #D98080;
+	--delete-button-font-background-disabled: #F5D0D0;
 
-	--add-button-background: green;
-	--add-button-background-hover: darkgreen;
-	--add-button-border-color: darkgreen;
-	--add-button-font-color: #efefef;
-	--add-button-font-color-disabled: #2A4C2A;
-	--add-button-font-background-disabled: #417541;
+	--add-button-background: #3B6D11;
+	--add-button-background-hover: #27500A;
+	--add-button-border-color: #4E8C1A;
+	--add-button-font-color: #FFFFFF;
+	--add-button-font-color-disabled: #8CB86A;
+	--add-button-font-background-disabled: #D6ECC0;
 
-	--edit-button-background: dodgerblue;
-	--edit-button-background-hover: royalblue;
-	--edit-button-border-color: royalblue;
-	--edit-button-font-color: #efefef;
-	--edit-button-font-color-disabled: #335677;
-	--edit-button-font-background-disabled: #4574A0;
+	--edit-button-background: #1C3A6E;
+	--edit-button-background-hover: #102650;
+	--edit-button-border-color: #2A5298;
+	--edit-button-font-color: #FFFFFF;
+	--edit-button-font-color-disabled: #7A9CC7;
+	--edit-button-font-background-disabled: #D9E9FB;
 
-	--progress-background: #4242a6;
-	--progress-color: rgb(43, 194, 83);
+	--file-drop-background: #EEF4FD;
+	--file-drop-border: #2A5298;
+	--file-drop-background-hover: #D9E9FB;
+	--file-drop-border-hover: #1C3A6E;
+	--file-drop-icon: #2A5298;
+	--file-drop-title: #1A2D4A;
+	--file-drop-info: #5F8CA8;
+	--file-drop-item-background: #FFFFFF;
+	--file-drop-item-border: #B8D0F0;
 
-	--message-success-background: green;
-	--message-error-background: red;
+	--progress-background: #D9E9FB;
+	--progress-color: #1C3A6E;
+
+    --message-success-bg:     #D6ECC0;
+    --message-success-border: #4E8C1A;
+    --message-success-text:   #27500A;
+    --message-success-close:  #3B6D11;
+
+    --message-error-bg:       #F5D0D0;
+    --message-error-border:   #C43D3D;
+    --message-error-text:     #791F1F;
+    --message-error-close:    #A32D2D;
 }
 
 body {

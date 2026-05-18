@@ -56,10 +56,10 @@ function create_sponsor_item() {
         $('#input_content').val('');
         
         console.log(data);
+        busy = false;
         show_sponsor_data();
 
         create_message($('#error_container'), 'success', 'Sponsor aangemaakt', 'Het bericht is succesvol opgeslagen.')
-        busy = false;
     }).fail(function (xhr, status, error) {
         fail_message($('#error_container'), xhr);
         busy = false;

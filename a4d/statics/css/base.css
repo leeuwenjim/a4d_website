@@ -50,110 +50,109 @@
 */
 
 #content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 7rem 0;
+    min-height: 60vh;
+    padding-top: 48px;
+    padding-bottom: 48px;
     background: var(--main-background-color);
-    }
- 
-td{
-    text-align: center;
-}    
+}
 
 .content-table {
     border-collapse: collapse;
-    width: 100%;
+    margin: auto;
+    padding: 0;
+    width: 80%;
     table-layout: fixed;
-    /* display: flex;
-    justify-content: center; */
 }
 
 .ct-menu {
-	width: 100%;
-	vertical-align: top;
-    display: flex;
-    justify-content: center;
+    width: 200px;
+    vertical-align: top;
 }
 
 .ct-spacer {
-	width: 0;
+    width: 40px;
 }
 
 .ct-content {
-    width: 80%;
-	vertical-align: top;
-    /* display: flex;
-    justify-content: center; */
-}
-
-.ct-content .content-container{
-    width: 90%;
+    vertical-align: top;
 }
 
 .content-container {
-	background: var(--container-background);
-	box-shadow: 0px 15px 15px 0px rgba(97, 144, 192, 0.3);
-	border: 2px solid var(--container-background-border);
-	border-radius: 15px;
-    padding: 2rem;
-    width: 60%;
+    background: var(--container-background);
+    border: 1px solid var(--container-background-border);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 16px rgba(0, 0, 0, 0.06);
+    padding: 2rem 2.25rem;
     font-family: var(--font-family);
     font-size: var(--content-text-size);
+    width: 80%;
+}
+
+#content > .content-container {
+  margin-left: auto;
+}
+
+.content-container.full-width {
+    width: 60%;
+    margin: 0 auto 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .content-header {
-	font-family: var(--font-family);
-	color: var(--dark-color);
-	font-size: 45px;
+    font-family: var(--font-family);
+    color: var(--dark-color);
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 .content-container h1 {
-    font-family: var(--font-family);
+    font-size: 28px;
+    font-weight: 700;
     color: var(--dark-color);
-    font-size: 2.5rem;
+    letter-spacing: -0.015em;
 }
 
 .content-container h2 {
-    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 600;
     color: var(--dark-color);
-    font-size: 1.875rem;
+    letter-spacing: -0.01em;
 }
 
 .content-container h3 {
-    font-family: var(--font-family);
+    font-size: 18px;
+    font-weight: 600;
     color: var(--dark-color);
-    font-size: 1.5rem;
 }
 
 .content-container h4 {
-    font-family: var(--font-family);
+    font-size: 16px;
+    font-weight: 600;
     color: var(--dark-color);
-    font-size: 1.25rem;
 }
 
 .content-container h5 {
-    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 600;
     color: var(--dark-color);
-    font-size: 1.125rem;
 }
 
 .content-container h6 {
-    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 600;
     color: var(--dark-color);
-    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.content-container p {
-    font-family: var(--font-family);
-    color: var(--dark-color);
-    font-size: var(--content-text-size);
-}
-
+.content-container p,
 .content-container li {
     font-family: var(--font-family);
-    color: var(--dark-color);
+    color: var(--text-secondary);
     font-size: var(--content-text-size);
+    line-height: 1.7;
 }
 
 /*
@@ -185,7 +184,21 @@ td{
     }
 
     .content-container{
-        width: 75%;
+        width: 100%;
+    }
+
+    .content-table,
+    .content-table tbody,
+    .content-table tr,
+    .content-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .ct-menu,
+    .ct-content {
+        box-sizing: border-box;
+        width: 100%;
     }
 }
 
@@ -207,6 +220,19 @@ td{
     }
 
     .content-container{
-        width: 90%;
+        width: 100%;
+    }
+
+    .content-table,
+    .content-table tbody,
+    .content-table tr,
+    .content-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .ct-menu,
+    .ct-content {
+        box-sizing: border-box;
     }
 }

@@ -91,6 +91,7 @@ function add_user() {
         $('#input_username').val('');
         $('#input_ww1').val('');
         $('#input_ww2').val('');
+        busy = false;
         get_all_users();
     }).fail(function (xhr, status, error) {
         busy = false;
@@ -103,6 +104,7 @@ function delete_user(user_id) {
     if (!confirm('Weet u zeker dat u de beheerder wilt verwijderen?')) return;
     busy = true
     $.delete('/api/users/' + user_id + '/', {}, (data) => {
+        busy = false;
         get_all_users();
     }).fail(function (xhr, status, error) {
         busy = false;

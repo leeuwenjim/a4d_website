@@ -24,17 +24,18 @@
         </div>
     </div>
 
+
 {% endblock %}
 
 {% block javascript %}
 
-    <script src="{% static 'js/editor/delimiter.js' %}"></script>
-    <script src="{% static 'js/editor/header.js' %}"></script>
-    <script src="{% static 'js/editor/link.js' %}"></script>
-    <script src="{% static 'js/editor/list.js' %}"></script>
-    <script src="{% static 'js/editor/marker.js' %}"></script>
-    <script src="{% static 'js/editor/table.js' %}"></script>
-    <script src="{% static 'js/editor/editorjs.js' %}"></script>
-    <script src="{% static 'js/backend/page_edit.js' %}"></script>
+    <script src="{% static 'js/editor/delimiter.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/header.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/link.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/list.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/marker.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/table.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/editor/editorjs.js' %}?v={{STATICS_VERSION}}"></script>
+    <script src="{% static 'js/backend/page_edit.js' %}?v={{STATICS_VERSION}}"></script>
 
 {% endblock %}

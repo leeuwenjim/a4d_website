@@ -65,7 +65,6 @@ class RouteImageOverview(APIView):
             print(e)
         return Response({'image': ['Could not save the image', ]}, status=status.HTTP_400_BAD_REQUEST) 
 
-        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
 class RouteImageDetailView(DetailApiView):
     permission_classes = [IsAuthenticated]

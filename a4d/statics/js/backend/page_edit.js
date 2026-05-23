@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     slug = window.location.pathname.match(/([^\/]*)\/*$/)[1];
 
     editor = new EditorJS({
+        minHeight: 50,
         holder: 'editorjs',
         inlineToolbar: ['link', 'bold', 'italic'],
         tools: {
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             alert(`Editor initialization failed because of ${reason}`);
             $('#add_button').css('color', '#2A4C2A').css('background-color', '#417541').attr('disabled', true);
         });
-
+    
 });
 
 function save_editor() {

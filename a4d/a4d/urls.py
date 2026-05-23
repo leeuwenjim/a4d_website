@@ -48,6 +48,7 @@ urlpatterns = [
         path('news/', backend_views.news_controll, name='a4d_beheer_news'),
         path('album/', backend_views.album_controll, name='a4d_beheer_album'),
         path('album/<str:slug>/', backend_views.gallery_controll, name='a4d_beheer_gallery'),
+        path('routes/', backend_views.edit_route, name='a4d_beheer_routes'),
         path('<str:slug>/', backend_views.edit_page, name='a4d_beheer_edit'),
     ])),
 

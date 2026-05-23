@@ -2,15 +2,17 @@
     min-height: 60vh;
     padding-top: 40px;
     padding-bottom: 40px;
+    background: var(--main-background-color);
 }
 
 .content-table {
     border-collapse: collapse;
     margin: auto;
+    margin-left: 40px;
+    margin-right: 20px;
     padding: 0px;
-    width: 80%;
     table-layout: fixed;
-    height: 1px;
+    width: calc(100% - 60px);
 }
 
 .ct-menu {
@@ -28,11 +30,22 @@
 
 .content-container {
     background: var(--container-background);
+    border: 1px solid var(--container-background-border);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 16px rgba(0, 0, 0, 0.06);
+    padding: 2rem 2.25rem;
+    font-family: var(--font-family);
+    font-size: var(--content-text-size);
+    /*background: var(--container-background);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--container-background-border);
     border-radius: 15px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;*/
+}
+
+.content-container + .content-container {
+    margin-top: 24px;
 }
 
 .cp-menu {

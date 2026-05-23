@@ -147,7 +147,7 @@ function upload_logo(sponsor_id, modal_object, failed)
                 contentType: false,
                 processData: false,
                 timeout: 60000,
-            })
+            });
     }
     else {
         console.log("No file: " + sponsor_id);

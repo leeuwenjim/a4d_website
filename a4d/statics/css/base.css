@@ -88,6 +88,10 @@
     width: 80%;
 }
 
+.content-container + .content-container {
+    margin-top: 24px;
+}
+
 #content > .content-container {
   margin-left: auto;
 }

@@ -55,7 +55,10 @@ def __render_table(table_data):
 
 
 def __render_image(image_data):
-    return f'<img class="sponsor-image" src="{image_data["url"]}" />'
+    html_class = ''
+    if ("html_class" in image_data.keys()):
+        html_class = f' class="{image_data["html_class"]}"' 
+    return f'<img{html_class} src="{image_data["url"]}" />'
 
 def render_page_content(page_data: str, extra_page_data: str = None):
     data_blocks = json.loads(page_data)

@@ -71,6 +71,11 @@
 	--progress-background: #D9E9FB;
 	--progress-color: #1C3A6E;
 
+	--tabs-border-color: #2A5298;
+	--edit-button-font-background-disabled: #D9E9FB;
+	--back-button-text-color: #1A2D4A;
+	--back-button-border-color: #2A5298;
+
     --message-success-bg:     #D6ECC0;
     --message-success-border: #4E8C1A;
     --message-success-text:   #27500A;

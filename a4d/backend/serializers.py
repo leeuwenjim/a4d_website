@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import ThanxToModel, News, Album, Photo, Sponsor
+from .models import ThanxToModel, News, Album, Photo, Sponsor, RouteImage, Route, route_helper_index_to_name
 
 
 class ThanxToSerializer(serializers.ModelSerializer):
@@ -24,11 +24,6 @@ class NewsSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'published_on']
 
     def get_published_on(self, instance: News):
-        print('-'*50)
-        print(instance)
-        print(instance.publish_date)
-        print(type(instance.publish_date))
-        print('-' * 50)
         return instance.publish_date.strftime('%d-%m-%Y')
 
 class SponsorSerializer(serializers.ModelSerializer):
@@ -41,7 +36,6 @@ class SponsorSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'logo_url', 'extra_url']
     
     def get_logo_url(self, instance: Sponsor):
-        print(instance)
         if instance.logo:
             return instance.logo.url
         return ""
@@ -70,3 +64,32 @@ class ImageSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance: Photo):
         return instance.image.url
+
+class RouteImageSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = RouteImage
+        fields = ['id', 'img_url', 'title']
+        read_only_field = ['id', 'img_url']
+    
+    def get_img_url(self, instance: RouteImage):
+        return instance.image.url
+    
+class RouteSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+    title = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Route
+        fields = ['slot', 'title', 'img_url', 'description']
+        read_only_field = ['slot', 'title', 'img_url']
+    
+    def get_title(self, instance: Route):
+        title_lookup = ['Onbekend', 'Dinsdag 5km', 'Woensdag 5km', 'Donderdag 5km', 'Vrijdag 5km', 'Dinsdag 10km', 'Woensdag 10km', 'Donderdag 10km', 'Vrijdag 10km']
+        return title_lookup[instance.slot]
+
+    def get_img_url(self, instance: Route):
+        if instance.image:
+            return instance.image.url
+        return ''

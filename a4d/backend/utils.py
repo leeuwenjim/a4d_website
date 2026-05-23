@@ -2,6 +2,7 @@ from functools import wraps
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.request import Request
+from typing import Optional
 
 
 def allow_zero(func):
@@ -75,14 +76,18 @@ def create_header_data(text: str, size: int):
             }
         }
 
-def create_image_data(url: str):
-    return {
+def create_image_data(url: str, style_class: Optional[str] = None):
+    data = {
         'id': 'gen-image',
         'type': 'image',
         'data': {
             'url': url
         }
     }
+    if (style_class):
+        data["data"]["html_class"] = style_class
+
+    return data
 
 def create_text_data(text: str):
     return {

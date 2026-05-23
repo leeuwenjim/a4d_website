@@ -31,7 +31,9 @@ urlpatterns = [
     path('fotos/', frontend_views.gallery, name='a4d_gallery'),
     path('fotos/<int:year>/', frontend_views.gallery, name='a4d_gallery_year'),
     path('fotos/<int:year>/<str:day>/', frontend_views.gallery, name='a4d_gallery_day'),
-
+    path('routes/', frontend_views.page_routes, name='a4d_routes'),
+    path('routes/5km/', frontend_views.route_info_5km, name='a4d_route_5km'),
+    path('routes/10km/', frontend_views.route_info_10km, name='a4d_route_10km'),
 
     # Controll panel
 
@@ -65,6 +67,12 @@ urlpatterns = [
         path('thanx/<int:t_id>/', api_views.ThanxToDetails.as_view()),
         path('news/', api_views.NewsOverview.as_view()),
         path('news/<int:news_id>/', api_views.NewsDetails.as_view()),
+        path('route/', api_views.RouteBaseOverview.as_view()),
+        path('route/extra/', api_views.RouteImageOverview.as_view()),
+        path('route/extra/<int:img_id>/', api_views.RouteImageDetailView.as_view()),
+        path('route/routes/', api_views.RouteOverview.as_view()),
+        path('route/routes/<int:route_id>/', api_views.RouteDetailview.as_view()),
+        path('route/routes/<int:route_id>/img/', api_views.RouteAttachmentDetailView.as_view()),
         path('<str:slug>/', api_views.PageEditView.as_view()),
     ])),
 

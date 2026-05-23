@@ -165,6 +165,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DATE_INPUT_FORMATS': [
         '%d-%m-%y',
@@ -175,6 +176,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'backend.pagination.ApiRestPagination',
     'PAGE_SIZE': 10,
 }
+
+
 
 SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', 'a4d_session')
 

@@ -1,0 +1,227 @@
+{% load static %}
+<html>
+<head>
+    <title>Avondvierdaagse Hoevelaken</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0; " />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/page.css' %}?v={{STATICS_VERSION}}"/>
+
+    <style>
+
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 0;
+        border-bottom: 2px solid #ccc;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .tabs::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .tabs::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 999px;
+    }
+
+    .tab-button {
+        padding: 12px 18px;
+        cursor: pointer;
+        background: var(--container-background);
+        border: 1px solid var(--tabs-border-color);
+        margin-bottom: -2px; 
+        transition: background 0.2s;
+        font-size: 14px;
+        border-radius: 8px 8px 0 0;
+        position: relative;
+    }
+
+    .tab-button:not(:first-child) {
+        border-left: none;
+    }
+
+    .tab-button:hover {
+        background: var(--tabs-hover-background);
+    }
+
+    .tab-button.active {
+        background: white;
+        font-weight: bold;
+        position: relative;
+        border-bottom: none;
+    }
+
+    .tab-wrapper {
+        background: var(--container-background);
+        border: 1px solid var(--tabs-border-color);
+        border-top: none;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--back-button-text-color);
+        text-decoration: none;
+        padding: 8px 16px;
+        border: 1.5px solid var(--back-button-border-color);
+        border-radius: 8px;
+        background: var(--container-background);
+        transition: background 0.15s, border-color 0.15s;
+    }
+
+    .back-btn i {
+        font-size: 18px;
+        color: #1C3A6E;
+    }
+
+    .back-btn:hover {
+        background: #D9E9FB;
+        border-color: #1C3A6E;
+    }
+
+    @media (max-width: 600px) {
+
+        .tab-button {
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+
+        .tab-wrapper {
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+    }
+
+
+
+    </style>
+
+</head>
+<body>
+<header id="banner">
+    <div id="banner-text">Avondvierdaagse Hoevelaken</div>
+</header>
+
+{% include 'a4d/navigation.html' %}
+
+<div id="content">
+    <div class="content-container">
+
+<a href="{% url 'a4d_routes' %}" class="back-btn">
+    <i class="ti ti-arrow-left" aria-hidden="true"></i>
+    Terug naar Routes
+</a>
+
+<h1>{{title}}</h1>
+
+    <div class="tabs">
+      <div class="tab-button active" onclick="openTab(event, 'dinsdag')">Dinsdag</div>
+      <div class="tab-button" onclick="openTab(event, 'woensdag')">Woensdag</div>
+      <div class="tab-button" onclick="openTab(event, 'donderdag')">Donderdag</div>
+      <div class="tab-button" onclick="openTab(event, 'vrijdag')">Vrijdag</div>
+    </div>
+
+    <div class="tab-wrapper">
+      <div id="dinsdag" class="tab-content active">
+        {% if img_di %}<img src="{{img_di}}" />{%endif%}
+        <ol>
+          {%for line in di_route%}
+            <li>{{line}}</li>
+          {%endfor%}
+        </ol>
+      </div>
+
+      <div id="woensdag" class="tab-content">
+        {% if img_wo %}<img src="{{img_wo}}" />{%endif%}
+        <ol>
+          {%for line in wo_route%}
+            <li>{{line}}</li>
+          {%endfor%}
+        </ol>
+      </div>
+
+      <div id="donderdag" class="tab-content">
+        {% if img_do %}<img src="{{img_do}}" />{%endif%}
+        <ol>
+          {%for line in do_route%}
+            <li>{{line}}</li>
+          {%endfor%}
+        </ol>
+      </div>
+
+      <div id="vrijdag" class="tab-content">
+        {% if img_vr %}<img src="{{img_vr}}" />{%endif%}
+        <ol>
+          {%for line in vr_route%}
+            <li>{{line}}</li>
+          {%endfor%}
+        </ol>
+      </div>
+    </div>
+    </div>
+
+
+</div>
+
+{% include 'a4d/footer.html' %}
+
+<script type="text/javascript" src="{% static 'js/menu.js' %}?v={{STATICS_VERSION}}"></script>
+<script>
+    function openTab(evt, tabId) {
+      const tabContents = document.querySelectorAll(".tab-content");
+      const tabButtons = document.querySelectorAll(".tab-button");
+
+      tabContents.forEach(c => c.classList.remove("active"));
+      tabButtons.forEach(b => b.classList.remove("active"));
+
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>

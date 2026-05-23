@@ -9,9 +9,9 @@ from backend.utils import DetailApiView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from .models import News, ThanxToModel, Page, Album, Photo, Sponsor
+from .models import News, ThanxToModel, Page, Album, Photo, Sponsor, RouteImage, Route
 from .pagination import ApiRestPagination
-from .serializers import ThanxToSerializer, UserSerializer, NewsSerializer, AlbumSerializer, ImageSerializer, SponsorSerializer
+from .serializers import ThanxToSerializer, UserSerializer, NewsSerializer, AlbumSerializer, ImageSerializer, SponsorSerializer, RouteImageSerializer, RouteSerializer
 from django.db.models import Value as V
 from django.db.models.functions import Concat
 from django.contrib.auth.models import User
@@ -38,6 +38,134 @@ class NewsOverview(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class RouteBaseOverview(APIView):
+    def get(self, request):
+        return Response({"success": "false", "details": "Endpoint not impemented"}, status=status.HTTP_501_NOT_IMPLEMENTED)
+
+class RouteImageOverview(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        data = RouteImage.objects.all().order_by('id')
+        return Response(RouteImageSerializer(data, many=True).data, status=status.HTTP_200_OK)
+    
+    def post(self, request):
+        serializer = RouteImageSerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            
+        routeimg = RouteImage(title=serializer.validated_data['title'])
+        
+        routeimg.image = request.data['image']
+        try:
+            routeimg.save()
+            return Response(RouteImageSerializer(routeimg).data, status=status.HTTP_202_ACCEPTED)
+        except Exception as e:
+            print(e)
+        return Response({'image': ['Could not save the image', ]}, status=status.HTTP_400_BAD_REQUEST) 
+
+        return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+
+class RouteImageDetailView(DetailApiView):
+    permission_classes = [IsAuthenticated]
+
+    model = RouteImage
+    id_name = 'img_id'
+    keyword = 'route_image'
+
+    def get(self, request, route_image: RouteImage):
+        return Response(RouteImageSerializer(route_image).data, status=status.HTTP_200_OK)
+    
+    def post(sef, request, route_image: RouteImage):
+        route_image.image.delete()
+        route_image.image = request.data['image']
+        try:
+            route_image.save()
+            return Response(RouteImageSerializer(route_image).data, status=status.HTTP_202_ACCEPTED)
+        except Exception as e:
+            print(e)
+        return Response({'error': 'Could not save the image'}, status=status.HTTP_400_BAD_REQUEST) 
+    
+    def put(sef, request, route_image: RouteImage):
+        serializer = RouteImageSerializer(instance=route_image, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, route_image:RouteImage):
+        route_image.image.delete()
+        route_image.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+class RouteOverview(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        data = Route.objects.all().order_by('slot')
+        return Response(RouteSerializer(data, many=True).data, status=status.HTTP_200_OK)
+
+class RouteDetailview(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, route_id: int):
+        route: Route = Route.get_route(route_id)
+        if route is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(RouteSerializer(route).data, status=status.HTTP_200_OK)
+    
+    def post(self, request, route_id: int):
+        route: Route = Route.get_route(route_id)
+        if route is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = RouteSerializer(instance=route, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class RouteAttachmentDetailView(APIView):
+    def get(self, request, route_id: int):
+        route: Route = Route.get_route(route_id)
+        if route is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        img_url = ''
+        if (route.image):
+            img_url = route.image.url
+        return Response({'slot': route_id, 'image': img_url}, status=status.HTTP_200_OK)
+    
+    def post(self, request, route_id: int):
+        route: Route = Route.get_route(route_id)
+        if route is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        if (route.image):
+            route.image.delete()
+        route.image = request.data['image']
+        try:
+            route.save()
+        except Exception as e:
+            print(e)
+            return Response({'image': ['Could not save the image', ]}, status=status.HTTP_400_BAD_REQUEST)
+        
+        img_url = route.image.url
+        return Response({'slot': route_id, 'image': img_url}, status=status.HTTP_202_ACCEPTED)
+    
+    def delete(self, request, route_id: int):
+        route: Route = Route.get_route(route_id)
+        if route is None:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        if (route.image):
+            route.image.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
 
 class SponsorOverview(APIView):
 

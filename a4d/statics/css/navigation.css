@@ -5,6 +5,7 @@
 	margin:0px;
 	min-height: var(--menu-height);
 	width: 100%;
+	z-index: 2;
 }
 
 .topnav {
@@ -122,7 +123,7 @@
 
 	.test {
 		display: flex;
-		flex-direction: row-reverse;
+		flex-direction: column-reverse;
 	}
 
 	.topnav.responsive .responsive-menu {

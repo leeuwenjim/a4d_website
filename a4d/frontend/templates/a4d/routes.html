@@ -1,0 +1,116 @@
+{% load static %}
+<html>
+<head>
+    <title>Avondvierdaagse Hoevelaken</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0; " />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/navigation.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}?v={{STATICS_VERSION}}"/>
+    <link rel="stylesheet" href="{% static 'css/page.css' %}?v={{STATICS_VERSION}}"/>
+
+    <style>
+          .button-container {
+    display: flex;
+    gap: 20px;
+  }
+    .route-button {
+    flex: 1;
+    min-width: 240px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px 28px;
+
+    background: var(--edit-button-background);
+    border: 2px solid var(--edit-button-border-color);
+    border-radius: 14px;
+
+    color: var(--edit-button-font-color);
+    text-decoration: none;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    transition:
+      background 0.2s ease,
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
+
+    box-shadow:
+      0 4px 10px rgba(16, 38, 80, 0.15);
+
+    cursor: pointer;
+  }  
+  .route-button:hover {
+    background: var(--edit-button-background-hover);
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 8px 18px rgba(16, 38, 80, 0.22);
+  }
+
+  .route-button:active {
+    transform: translateY(0);
+  }
+
+  .route_extra_img{
+    
+  width: auto;
+  max-width: 90%;
+  border-radius: 8px;
+  border: 1px solid var(--edit-button-border-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-right: 12px;
+  vertical-align: middle;
+  }
+
+  @media (max-width: 700px) {
+    .button-container {
+      flex-direction: column;
+    }
+  }
+    </style>
+
+</head>
+<body>
+<header id="banner">
+    <div id="banner-text">Avondvierdaagse Hoevelaken</div>
+</header>
+
+{% include 'a4d/navigation.html' %}
+
+<div id="content">
+    <div class="content-container">
+
+        {{ content }}
+
+    </div>
+
+    <div class="content-container">
+        <div class="button-container">
+            <a href="{% url 'a4d_route_5km' %}" class="route-button">
+                Routes 5 km
+            </a>
+
+            <a href="{% url 'a4d_route_10km' %}" class="route-button">
+                Routes 10 km
+            </a>
+        </div>
+    </div>
+
+    <div class="content-container">
+        {{ extra_content }}
+    </div>
+
+</div>
+
+{% include 'a4d/footer.html' %}
+
+<script type="text/javascript" src="{% static 'js/menu.js' %}?v={{STATICS_VERSION}}"></script>
+</body>
+</html>

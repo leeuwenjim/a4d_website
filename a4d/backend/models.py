@@ -1,6 +1,6 @@
 from django.db import models
 import re
-
+import time
 from backend.slugify import unique_slugify
 
 
@@ -13,16 +13,16 @@ def picture_upload_location(instance: 'Photo', filename):
     return 'images/photos/{}/{}/{}'.format(instance.album.year, instance.album.title, filename)
 
 def sponsor_logo_upload(instance: 'Sponsor', filename):
-    return 'images/sponsor/logo/{}'.format(filename)
+    return 'images/sponsor/logo/{}_{}'.format(time.time(), filename)
 
 def sponsor_extra_image_upload(instance: 'Sponsor', filename):
-    return 'images/sponsor/extra/{}'.format(filename)
+    return 'images/sponsor/extra/{}_{}'.format(time.time(), filename)
 
 def routes_image_upload(instance: 'RouteImage', filename):
-    return 'images/routes/{}'.format(filename)
+    return 'images/routes/{}_{}'.format(time.time(), filename)
 
 def routes_walking_image_upload(instance: 'RouteImage', filename):
-    return 'images/walking_routes/{}'.format(filename)
+    return 'images/walking_routes/{}_{}'.format(time.time(), filename)
 
 class News(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)

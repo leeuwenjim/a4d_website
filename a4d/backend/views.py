@@ -28,6 +28,7 @@ def get_pages(slug):
         [reverse('a4d_beheer_edit', kwargs={'slug': 'inschrijven'}), 'Inschrijven', bool(slug == 'inschrijven')],
         [reverse('a4d_beheer_edit', kwargs={'slug': 'controles'}), 'Controles', bool(slug == 'controles')],
         [reverse('a4d_beheer_routes',), 'Routes', bool(slug == 'routes')],
+        [reverse('a4d_beheer_routes_desc',), 'Route Beschrijving', bool(slug == 'route_desc')],
         [reverse('a4d_beheer_edit', kwargs={'slug': 'parkeren'}), 'Parkeren', bool(slug == 'parkeren')],
         [reverse('a4d_beheer_edit', kwargs={'slug': 'faq'}), 'Veelgestelde vragen', bool(slug == 'faq')],
 
@@ -164,6 +165,16 @@ def edit_route(request):
     }
 
     return render(request, 'a4d/backend/route_control.html', context)
+
+@is_authenticated
+def edit_route_description(request):
+    slug = 'route_desc'
+    context = {
+        'pages': get_pages(slug),
+        'slug': slug,
+    }
+
+    return render(request, 'a4d/backend/route_desc_control.html', context)
 
 @is_authenticated
 def album_controll(request):

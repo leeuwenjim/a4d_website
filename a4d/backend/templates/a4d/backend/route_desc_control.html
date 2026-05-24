@@ -1,0 +1,219 @@
+{% extends 'a4d/backend/backend_base.html' %}
+{% load static %}
+
+{% block head %}
+    <style>
+        .button-group-container 
+        {
+
+        }
+        
+        .group-button
+        {
+            padding: 10px 20px;
+            background-color: var(--edit-button-font-background-disabled);
+            border: 1px solid var(--edit-button-border-color);
+            color: var(--edit-button-font-color-disabled);
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .group-button:hover
+        {
+            background-color: var(--edit-button-light-background-hover);
+        }
+
+        .group-button.active, .group-button.active:hover
+        {
+            background-color: var(--edit-button-background);
+            color: var(--font-color-light);
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .alt-img-container {
+            display: flex; 
+            gap: 8px; 
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .alt-img-container > input {
+            border: 1px solid #808080;
+            flex: 1; 
+            min-width: 0;
+        }
+
+        #img_preview > img
+        {
+            height: 300px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="content-container">
+        <h1>Route beschrijving aanpassen</h1>
+
+        <div class="button-group-container" id="my-group">
+            <h2>5 KM</h2>
+            <button class="group-button active" data-id="1">Dinsdag</button>
+            <button class="group-button" data-id="2">Woensdag</button>
+            <button class="group-button" data-id="3">Donderdag</button>
+            <button class="group-button" data-id="4">Vrijdag</button>
+            
+            <h2>10 KM</h2>
+            <button class="group-button" data-id="5">Dinsdag</button>
+            <button class="group-button" data-id="6">Woensdag</button>
+            <button class="group-button" data-id="7">Donderdag</button>
+            <button class="group-button" data-id="8">Vrijdag</button>
+        </div>
+    </div>
+
+    <div class="content-container" id="alter_desc">
+        <h2 id="alter_header"></h2>
+
+        <div id="error_container"></div>
+
+        <div id="img_preview">
+
+        </div>
+        
+        <!-- Image swap -->
+        <div id="alt_image_div" class="alt-img-container">
+            <input type="file" id="route_img_file" />
+            <button class="add_button" onclick="upload_image()">Upload</button>
+            <button class="delete_button" onclick="delete_image()">Verwijder</button>
+        </div>
+
+        <!-- Description -->
+         <textarea rows="20" id="alter_desc_field"></textarea>
+
+        <div style="text-align: right; margin-bottom: 10px;">
+            <button class="add_button" id="add_button" onclick="save_desc()">Opslaan</button>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            load_data("1");
+        });
+
+    function save_desc()
+    {
+        const activeId = String(document.querySelector('.group-button.active').dataset.id);
+        const endpoint = "/api/route/routes/"+activeId+"/";
+
+        $.post(
+            endpoint,
+            {
+                "description": $("#alter_desc_field").val()
+            },
+            (data) =>
+            {
+                create_message($('#error_container'), 'success', 'Aanpassing is opgeslagen', 'De aanpassingen in de route beschrijving zijn succesvol opgeslagen.');
+            }
+        ).fail(function (xhr, status, error){
+            fail_message($('#error_container'), xhr);
+        });
+    }
+
+    function upload_image()
+    {
+        const $file_input = $('#route_img_file')[0];
+        const selected_files = $file_input.files;
+
+        if (selected_files.length > 0)
+        {
+            const activeId = String(document.querySelector('.group-button.active').dataset.id);
+            const endpoint = "/api/route/routes/"+activeId+"/img/";
+            const send_data = new FormData();
+            send_data.append('image', selected_files[0], selected_files[0].name);
+
+            $.ajax({
+                type: 'POST',
+                url: endpoint,
+                success: function (data) {
+                    $("#img_preview").html("");
+                    $("#img_preview").append(
+                        $("<img>", {'src': data.img_url})
+                    );
+                },
+                error: function (xhr, status, error) {
+                    fail_message($('#error_container'), xhr);
+                },
+                async: true,
+                data: send_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                timeout: 60000,
+            });
+        }
+        else {
+            create_message($('#error_container'), 'error', 'Selecteer een afbeelding', 'Er was geen afbeelding geselecteerd om te uploaden');
+        }
+    }
+
+    function delete_image()
+    {
+        if (!confirm('Weet u zeker dat u de afbeelding wilt verwijderen?')) return;
+        const activeId = String(document.querySelector('.group-button.active').dataset.id);
+        const endpoint = "/api/route/routes/"+activeId+"/img/";
+        $.delete(endpoint, {}, (data) => {$("#img_preview").html("");}).fail(function (xhr, status, error){
+            fail_message($('#error_container'), xhr);
+        });
+    }
+
+    function load_data(item_id)
+    {
+        const endpoint = "/api/route/routes/"+item_id+"/"
+
+            // OPTIONAL: add loader to alter_header
+        $.get(endpoint, {}, (data) => {
+            // Set data
+                $("#alter_header").text(data.title);
+            $("#alter_desc_field").val(data.description);
+            if (data.img_url !== '')
+            {
+                $("#img_preview").append(
+                    $("<img>", {'src': data.img_url})
+                );
+            }
+            
+
+        }).fail(function (xhr, status, error){
+            // OPTIONAL remove loader
+
+            $("#alter_header").text('Kon data niet ophalen');
+        });
+    }
+
+    const group = document.getElementById('my-group');
+    group.querySelectorAll('.group-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            group.querySelectorAll('.group-button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // First clear everything 
+            $("#alter_header").text("");
+            $("#alter_desc_field").val("");
+            $("#route_img_file").val("");
+            $("#img_preview").html("");
+
+            const item_id = String($(btn).data("id"));
+            load_data(item_id);
+        });
+    });
+</script>
+
+{% endblock %}

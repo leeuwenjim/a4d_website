@@ -153,7 +153,7 @@ class RouteAttachmentDetailView(APIView):
             return Response({'image': ['Could not save the image', ]}, status=status.HTTP_400_BAD_REQUEST)
         
         img_url = route.image.url
-        return Response({'slot': route_id, 'image': img_url}, status=status.HTTP_202_ACCEPTED)
+        return Response({'slot': route_id, 'img_url': img_url}, status=status.HTTP_202_ACCEPTED)
     
     def delete(self, request, route_id: int):
         route: Route = Route.get_route(route_id)

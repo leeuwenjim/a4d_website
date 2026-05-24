@@ -183,6 +183,6 @@ SESSION_COOKIE_NAME = os.getenv('SESSION_COOKIE_NAME', 'a4d_session')
 
 CONTACT_MAIL = os.getenv('CONTACT_MAIL', 'info@avondvierdaagsehoevelaken.nl')
 
-STATICS_VERSION = '26.4.2'
+STATICS_VERSION = '26.5.24'
 if RUNNING_DEVSERVER:
     STATICS_VERSION = time.time_ns()

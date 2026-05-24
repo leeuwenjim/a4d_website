@@ -1,0 +1,47 @@
+.button-group-container 
+{
+
+}
+
+.group-button
+{
+    padding: 10px 20px;
+    background-color: var(--edit-button-font-background-disabled);
+    border: 1px solid var(--edit-button-border-color);
+    color: var(--edit-button-font-color-disabled);
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.group-button:hover
+{
+    background-color: var(--edit-button-light-background-hover);
+}
+
+.group-button.active, .group-button.active:hover
+{
+    background-color: var(--edit-button-background);
+    color: var(--font-color-light);
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.alt-img-container {
+    display: flex; 
+    gap: 8px; 
+    align-items: center;
+    margin-bottom: 24px;
+}
+.alt-img-container > input {
+    border: 1px solid #808080;
+    flex: 1; 
+    min-width: 0;
+}
+
+#img_preview > img
+{
+    height: 300px;
+}

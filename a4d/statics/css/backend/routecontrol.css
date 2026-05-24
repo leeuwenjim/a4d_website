@@ -1,0 +1,69 @@
+#extra_img_div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+}
+
+.img-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 320px;
+}
+
+.img-title {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    word-break: break-word;
+}
+
+.img-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: zoom-in;
+}
+
+.img-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+#img-preview-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Show as flex when visible (fadeIn sets display:block, so override) */
+#img-preview-modal[style*="display: block"] {
+    display: flex !important;
+}
+
+#img-preview-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#img-preview-large {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 6px;
+    cursor: zoom-out;
+    z-index: 1001;
+}
